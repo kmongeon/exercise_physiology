@@ -1,0 +1,1406 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "txtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\align left
+
+\series bold
+Investigating the changes in bone properties in relation to changes in muscle
+ strength in boys and girls across puberty – a longitudinal study
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Izabella A.
+ Ludwa, Kevin Mongeon, Bareket Falk and Panagiota Klentrou
+\end_layout
+
+\begin_layout Standard
+\align left
+Faculty of Applied Health Sciences, Brock University
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+ABSTRACT
+\end_layout
+
+\begin_layout Standard
+\align left
+The purpose of this longitudinal study was to investigate if changes in
+ muscle strength were directly related to changes in the bone properties.
+ Speed of sound (SOS) was measured in children, using transaxial quantitative
+ ultrasound at the dominant distal radius (non-weight-bearing bone).
+ Maturity was determined from the years from age of peak height velocity,
+ and grip strength was measured using a hand-held dynamometer.
+ Participants included 172 children aged 8-15 years, who were assessed 2-3
+ times over a period of 3 years.
+ Data were analyzed using a multilevel hierarchical structural equation
+ model with a partial mediated specification.
+ Results demonstrate that maturity has indirect effects on radial SOS mediated
+ by direct effects of grip strength.
+ That is, maturity increases grip strength (maturity effect on grip strength
+ 
+\emph on
+β
+\emph default
+=3.46), which in-turn, enhances bone properties at the radius (grip strength
+ effect on radial SOS 
+\emph on
+β
+\emph default
+=10.60).
+ In addition, our maturity-based model specifications explained more variation
+ (28%) in the radial SOS than grip strength or maturity alone (17% and 27%,
+ respectively), suggesting maturity is empirically important to both forearm
+ bone and muscle strength.
+ The influence of grip strength was small in children with high radial SOS
+ values.
+ Boys had higher grip strength than girls, and the marginal effect of maturity
+ on grip strength was greater than in girls, albeit not significant (
+\emph on
+β
+\emph default
+=4.10 vs 3.04; p
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textgreater
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+0.05).
+ However, the marginal effects of grip strength on radial SOS was significantly
+ greater in girls than in boys (
+\emph on
+β
+\emph default
+=14.26 vs 6.603; p
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textless
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+0.05).
+ Our results suggest that, among peri-pubertal children, muscle strength
+ has a direct effect on bone beyond the effects of maturation, especially
+ in girls.
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+ INTRODUCTION
+\end_layout
+
+\begin_layout Standard
+\align left
+The functional model of bone development postulates that the primary mechanical
+ challenges to bone's 
+\emph on
+mechanostat
+\emph default
+ during growth comes from increases in muscle force (Frost, 1987; Rauch
+ & Schöenau, 2001).
+ This suggests that the growth of bone and muscle are closely associated,
+ and that bone must adapt its strength to withstand forces from muscle contracti
+ons (Schöenau & Fricke, 2008; Schöenau & Frost, 2002).
+ Various cross-sectional studies have demonstrated positive relationships
+ between bone properties and muscle mass or force in youth (Janz et al.,
+ 2015, Macdonald et al., 2006; Schöenau et al., 2000, 2002; Wang et al., 2007;
+ Wey et al., 2011).
+ Moreover, correlations between lean body mass and bone mineral content,
+ which are surrogate measures of muscle and bone strength, have been reported
+ during the growing years (Faulkner et al., 1993; Manzoni et al., 1996), with
+ a temporal association between muscle and bone development (Rauch et al.,
+ 2004).
+ The peak rate of increase in muscle mass (Rauch et al., 2004) and presumably,
+ muscle strength occurs before the peak rate of accrual of bone mass (Rauch
+ et al., 2004) and bone strength (Jackowski et al., 2009), supporting the
+ 
+\emph on
+Mechanostat Theory
+\emph default
+ notion of muscle mass or force driving bone strength.
+ As the temporal accrual of muscle mass and bone mass is related to the
+ time of peak height velocity, it is likely that maturation plays a role
+ in the development of the functional muscle-bone unit.
+\end_layout
+
+\begin_layout Standard
+\align left
+Studies that have examined the muscle-bone unit have used radiation-based
+ technologies to indirectly measure bone strength using size-related measures
+ (areal bone density, content, area).
+ Transaxial quantitative ultrasound (QUS) measures the speed of sound (SOS)
+ 
+\emph on
+along
+\emph default
+ the bone, making its assessment independent of bone size, allowing for
+ better comparisons between children of different sizes and ages (Baroncelli,
+ 2008; Foldes et al., 1995).
+ QUS measures reflect both quantitative and qualitative properties of bone,
+ as the SOS measure is reflective of BMD, elasticity and microarchitecture
+ of bone (Baroncelli, 2008; Jaworski et al., 1995; Prins et al., 1998).
+ Specifically, the parameters are related to bone density and internal structure
+ (Gluer et al., 1994) but not to cortical thickness (Njeh et al., 1999), which
+ is advantageous when assessing growing youth of widely different size.
+ In the elderly, QUS is associated with bone strength and can predict fracture
+ risk, independent of bone mineral density (Bouxsein et al., 1999).
+\end_layout
+
+\begin_layout Standard
+\align left
+Similarly, previous longitudinal studies on the muscle-bone unit used measures
+ of muscle size (e.g., muscle cross-sectional area or lean body mass), rather
+ than muscle function.
+ This approach is based on the notion that muscle strength generally scales
+ with muscle size and assumes appropriate measures of size are sufficient
+ for muscle-bone unit investigations (Petit et al., 2005).
+ To date, only one study has examined the relationship between muscle power
+ assessed by a field test of function (vertical jump) and tibia bone strength
+ in adolescents.
+ They used peripheral quantitative computed tomography (pQCT) to provide
+ quantitative measures of bone strength indices along the length of the
+ tibia, and a mediation approach to elucidate whether muscle power is a
+ strong predictor of lower body bone strength.
+ Similar to the vertical jump, grip force is also a simple way to assess
+ muscle strength at the forearm, and has been found to be related to distal
+ radial bone strength in older men and women (Hasewega et al., 2011).
+ However, no study has examined the relationship between radial bone properties
+ and forearm muscle strength in children and adolescents longitudinally.
+ The radius, on the other hand, should be examined in order to separate
+ the influence of muscle strength on bone from other mechanical loads such
+ as weight bearing or ground reaction forces.
+\end_layout
+
+\begin_layout Standard
+\align left
+This study examined the relationship between radial bone properties and
+ forearm muscle strength in children and adolescents.
+ More specifically, the study used a mediation approach to investigate whether
+ changes in bone properties at a non-weight bone (i.e.
+ radial SOS) are directly or indirectly related to changes in grip strength
+ in boys and girls during the peri-pubertal period.
+ A secondary purpose was to investigate the influence of maturation on the
+ muscle-bone unit.
+ We hypothesized that changes in grip strength would significantly predict
+ changes in bone properties in boys and girls during the peri-pubertal period,
+ and that grip strength affects bone strength beyond the effects of maturation.
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+MATERIALS AND METHODS
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Study Design and Participants
+\end_layout
+
+\begin_layout Standard
+\align left
+A total of 172 children and adolescents (92 boys and 80 girls), 8-16 years
+ of age, were recruited from local school boards in the Niagara Region (Ontario,
+ Canada) as well as through poster and information sessions at the University's
+ recreation facility to participate in the Brock Active Muscles Study.
+ The study utilized a mixed-longitudinal design, in which each participant
+ was examined annually over a 3-year period (2010-2013).
+ All procedures were reviewed and approved by the Brock University Research
+ Ethics Board.
+ Testing occurred during the spring and autumn months in order to avoid
+ any seasonal effects typical of summer and winter months, particularly
+ for physical activity (Riddoch et al., 2007).
+ As there was an age overlap among participants, it is possible to estimate
+ a consecutive 10-year developmental pattern (8-18 years) over the shorter
+ 3-year study period (Baxter-Jones et al., 2003).
+\end_layout
+
+\begin_layout Standard
+\align left
+Participants had no history of chronic disease or medication use, and no
+ medical conditions.
+ Children and adolescents with experiences affecting bone properties (i.e.,
+ use of steroid medication, growth delay, previous and/or current fracture)
+ were excluded from the study.
+ Adolescents with irregular menses or using oral contraceptives were also
+ excluded.
+ The baseline characteristics of all participants at the time of recruitment
+ (i.e., first measurement occasion) are presented in Table 1.
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Table 1.
+
+\series default
+ Baseline characteristics of participants at their first measurement occasion
+ (mean ± SD).
+\end_layout
+
+\begin_layout Standard
+\align left
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="4">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
+<column alignment="none" valignment="top" special="@{}l">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="none" valignment="top" special="l@{}">
+<row endhead="true">
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "b"
+hor_pos "l"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raggedright
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "b"
+hor_pos "l"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raggedright
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Boys
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+(n=92)
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "b"
+hor_pos "l"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raggedright
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Girls
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+(n=80)
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "b"
+hor_pos "l"
+has_inner_box 1
+inner_pos "b"
+use_parbox 0
+use_makebox 0
+width "24col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+raggedright
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Total Group
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+(n=172)
+\series default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+strut
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age (yrs) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.7 ± 2.1 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.7 ± 1.9 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.7 ± 2.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Maturity Offset (yrs from PHV) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.7 ± 1.7 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.2 ± 1.6* 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-1.0 ± 1.8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Height (cm) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+151.8 ± 14.8 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+150.4 ± 12.4 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+151.2 ± 13.8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Body Mass (kg) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+46.0 ± 16.0 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45.5 ± 13.4 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+45.8 ± 14.8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Body Fat (%) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.5 ± 8.5 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+22.1 ± 7.6* 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19.6 ± 8.4
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="none" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Lean Body Mass (kg) 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37.2 ± 10.7 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+34.8 ± 7.7 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+36.1 ± 9.5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+*Significant difference between boys and girls (
+\emph on
+p
+\emph default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+textless
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{}
+\end_layout
+
+\end_inset
+
+0.05); PHV=Peak Height Velocity.
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Anthropometry and Maturity
+\end_layout
+
+\begin_layout Standard
+\align left
+Standing and sitting height were measured using a stadiometer (Ellard Instrument
+ation, Monroe, WA, USA) mounted to a wall and recorded to the nearest 0.1cm.
+ Leg length was calculated by subtracting seated height from standing height.
+ Body mass was measured to the nearest 0.1 kg using a calibrated balance
+ beam scale (Zenith Digital Scale).
+ Skinfold thickness was measured in triplicate at two sites (triceps and
+ subscapular) using Harpenden calipers (British Indicators, Herts, England),
+ and the median recorded.
+ If the range in the triplicate measures was greater than 1mm, a fourth
+ measurement was taken and the mean of the two median variables was recorded.
+ Adiposity (percent body fat) was estimated from the sum of these skinfolds,
+ using age- and maturity-specific equations, as described by Slaughter et
+ al.
+ (1988).
+\end_layout
+
+\begin_layout Standard
+\align left
+The maturity offset (years from age of peak height velocity), an indicator
+ of somatic maturity, was estimated using sex-specific regression equations
+ (Mirwald et al., 2002).
+ It was determined from measurements of height, seated height, leg length,
+ body mass and chronological age, and it was adjusted in accordance with
+ the measurement at the age closest to the estimated age of age of peak
+ height velocity.
+ All anthropometric measurements were performed by the same investigator.
+ The intra-operator coefficient of variation of the skinfold measurements
+ in 10 children was 2.4% and the interclass correlation coefficient (ICC)
+ was 0.996.
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Muscle Strength
+\end_layout
+
+\begin_layout Standard
+\align left
+Maximal dominant forearm strength was assessed by a hand-help dynamometer
+ to determine maximal isometric grip force.
+ The device handle was adjusted to the participant's grip and the test performed
+ with the participant in a standing position with their dominant arm abducted
+ at about 45 degrees elbow extended (Lorbergs et al., 2011).
+ Participants were instructed to squeeze the instrument as hard as possible
+ for 3 seconds.
+ Measurements were recorded to the nearest 0.5 kg.
+ Contractions were performed 3 times and the participant's largest value
+ (best trial) was used to represent their absolute maximal isometric grip
+ force.
+ Proper technique was monitored in order to minimize postural compensations
+ and corrected as necessary.
+ Isometric grip strength has been widely studied and reported for both genders
+ throughout childhood and adolescence (Blimkie, 1989).
+ In addition, a high test-retest reliability of the handgrip strength test
+ has been reported in untrained children (Espana-Romero et al., 2008), and
+ untrained and trained adolescents (Clerke et al., 2005; Gerodimos, 2012).
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Bone Properties 
+\end_layout
+
+\begin_layout Standard
+\align left
+Transaxial quantitative ultrasound (QUS, Sunlight Omnisense™ 7000S, Sunlight
+ Medical, Israel) was used to assess bone strength by measuring the SOS
+ (m/s) along the bone at the distal 1/3 of the radius.
+ The strength of bone is determined by the shortest time elapsed between
+ the transmission and reception of the signal transmission, with faster
+ transmissions reflecting stronger bone (Njeh et al., 1999).
+ The area of measurement for the radius was the midpoint between the olecranon
+ process and the tip of the third phalanx; wide scans of 140 degrees around
+ the radius were performed.
+ All measurements consisted of at least three consistent cycles.
+ A system quality verification of the QUS was performed with a Perspex phantom
+ before the first test of each day.
+ Although every effort was made for one operator to solely perform all QUS
+ measurements for the duration of the longitudinal study, this was not always
+ possible.
+ Thus, the first operator performed almost all SOS measurements with an
+ intra-operator coefficient of variation in 10 children of 2% and an interclass
+ correlation coefficient of 0.98.
+ The inter-operator coefficient of variation was 3%.
+\end_layout
+
+\begin_layout Standard
+\align left
+
+\series bold
+Statistical Analysis
+\end_layout
+
+\begin_layout Standard
+\align left
+Multilevel (hierarchical) structural equation (mediated) models were constructed
+ using Stata 14 (see Krull and MacKinnon (2001) and Preacher, Zyphur, and
+ Zhang(2010)).
+ The models explicate the relationships between strength and physical maturation
+ on their bone properties and include random effects across both bone and
+ strength properties.
+ Specifcally, radial and tibial bone properties are expressed as
+\begin_inset Formula 
+\begin{align}
+radial_{i,j} & =\beta_{0}^{r}+\beta_{1}^{r}gstrength_{i,j}+\beta_{2}maturation_{i,j}+\mathbf{Z_{i,j}^{\prime}\Omega^{r}}+\lambda_{i}^{r}+\epsilon_{i,j}^{r}\\
+tibial_{i,j} & =\beta_{0}^{t}+\beta_{1}^{t}istrength_{i,j}+\beta_{2}maturation_{i,j}+\mathbf{W_{i,j}^{\prime}\Omega^{t}}+\lambda_{i}^{t}+\epsilon_{i,j}^{t}\\
+gstrength_{i.j} & =\theta_{0}^{g}+\theta_{1}^{g}maturation_{i,t}+\gamma_{i}^{g}+\mu_{i,j}^{g}\\
+istrength_{i,j} & =\theta_{0}^{s}+\theta_{1}^{s}maturation_{i,t}+\gamma_{i}^{s}+\mu_{i,j}^{s}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align left
+where 
+\begin_inset Formula $radial_{i,j}$
+\end_inset
+
+and 
+\begin_inset Formula $tibial_{i,j}$
+\end_inset
+
+denotes the speed of sound measurementof the 
+\begin_inset Formula $i^{th}$
+\end_inset
+
+participant on measurement occasion 
+\begin_inset Formula $j$
+\end_inset
+
+.
+ The variable 
+\begin_inset Formula $gstrength_{i,j}$
+\end_inset
+
+ and 
+\begin_inset Formula $istrength_{i,j}$
+\end_inset
+
+denotes his/her grip (for radial) or isometric (for tibal) strength.
+ The variable 
+\begin_inset Formula $maturation_{i,j}$
+\end_inset
+
+ denotes bone-invariant physical maturation, and matrices 
+\begin_inset Formula $Z_{i,j}$
+\end_inset
+
+ and 
+\begin_inset Formula $W_{i,j}$
+\end_inset
+
+ consists of bone-invariant physical activity and/or nutrition control variables.
+ Both equations contain level-1 and level-2 effects.
+ The 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta$
+\end_inset
+
+ terms are unknown level-1 fixed parameters, and the 
+\begin_inset Formula $\epsilon_{i,j}$
+\end_inset
+
+and 
+\begin_inset Formula $\mu_{i,j}$
+\end_inset
+
+terms denote the idiosyncratic level-1 residuals.
+ The 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+and 
+\begin_inset Formula $\gamma_{i}$
+\end_inset
+
+ terms are unknown level-2 random parameters (between-participant variances)
+ that are assumed to be normally distributed with a mean of zero, as well
+ as independent of their associated covariates and residual terms.
+ Equations (1-4) were estimated simultaniously via maximum likelihood and
+ built using a stepwise procedure based a 0.05 level significant criteria
+ and the log-likelihood ratio statistic.
+\end_layout
+
+\begin_layout Standard
+\align left
+Table 2 presents some summary statistics including decomposed standard deviation
+s.
+ The between are greater than the within varations for all variables.
+ The between and within standard deviations of radial and tibial speed of
+ sound was 87.4 and 51.1, and 6.3 and 3.5, respectively.
+ The grip strength, between and within standard deviations were 32.2 and
+ 16.9, and isometric strength standard deviations 1.90 and 0.77.
+ In terms of the radial analysis, maturation and grip strength have the
+ strongest correlation (0.62).
+ The correlation coeffecients between the tibal SOS, maturation, and isometric
+ strength variables are similar (approx 0.50).
+\end_layout
+
+\begin_layout Standard
+\align left
+Multilevel mediation analyses results
+\end_layout
+
+\begin_layout Standard
+\align left
+The estimation results are presented in Table 3.
+ The random (level-2) participant indicated that participants had signifigantly
+ 
+\begin_inset Formula $\left(p<0.05\right)$
+\end_inset
+
+ different bone and strength properties.
+ Specifically, the random paramaters accounted for 61
+\begin_inset Formula $\left(\frac{\gamma_{i}^{g}}{\gamma_{i}^{g}+\mu_{i,j}^{g}}=\frac{18.43}{18.43+11.65}\right)$
+\end_inset
+
+ and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+55 
+\begin_inset Formula $\left(\frac{\gamma_{i}^{s}}{\gamma_{i}^{s}+\mu_{i,j}^{s}}=\frac{529.20}{529.20+438.58}\right)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+percent of the total grip and isometric, and 58
+\begin_inset Formula $\left(\frac{\lambda_{i}^{r}}{\lambda_{i}^{r}+\epsilon_{i,j}^{r}}=\frac{4481.57}{4481.57+3236}\right)$
+\end_inset
+
+ and 72 
+\begin_inset Formula $\left(\frac{\lambda_{i}^{t}}{\lambda_{i}^{t}+\epsilon_{i,j}^{t}}=\frac{5422.09}{5422.09+2104.49}\right)$
+\end_inset
+
+ percent of the total radial and tibial data data variations.
+ As expected, the grip and isometric 
+\begin_inset Formula $\rho\left(\gamma_{i}^{grip},\gamma_{i}^{iso}\right)=0.61=\frac{60.14}{\sqrt{18.43}\sqrt{529.20}}$
+\end_inset
+
+, as well as the radial and tibial 
+\begin_inset Formula $\rho\left(\lambda_{i}^{r},\lambda_{i}^{t}\right)=0.55=\frac{2721.26}{\sqrt{4481.57}\sqrt{5422.09}}$
+\end_inset
+
+random paramaters were correlated.
+\end_layout
+
+\begin_layout Standard
+\align left
+Signifigant 
+\begin_inset Formula $\left(p<0.05\right)$
+\end_inset
+
+fixed (level-1) parameters indicated strength partially mediated the relationshi
+p between maturation and bone properties.
+ In addition to the relationship between maturation and strength, both maturatio
+n and strength directly effected bone properties.
+ Specifically, grip strength had a direct effect on radial properites 
+\begin_inset Formula $\left(\beta_{1}^{r}=3.49\right)$
+\end_inset
+
+.
+ Maturation had a direct effect 
+\begin_inset Formula $\left(\beta_{2}^{r}=10.50\right)$
+\end_inset
+
+ independent of grip strength, and an indirect effect 
+\begin_inset Formula $\left(\beta_{1}^{r}\theta_{1}^{g}=8.92=3.49\times2.55\right)$
+\end_inset
+
+ through grip strength.
+ Similarly, isometric strength had a direct effect on tibial properties
+ 
+\begin_inset Formula $\left(\beta_{1}^{t}=0.59\right)$
+\end_inset
+
+.
+ Maturation had a direct effect 
+\begin_inset Formula $\left(\beta_{2}^{t}=27.87\right)$
+\end_inset
+
+ independent of isometric strength, and an indirect effect 
+\begin_inset Formula $\left(\beta_{1}^{t}\theta_{1}^{s}=5.56=0.59\times9.43\right)$
+\end_inset
+
+ through isometric strength.
+ As a result, the total maturation effect on radial and tibial properties
+ was 19.43 
+\begin_inset Formula $\left(=10.50+2.55\times3.49\right)$
+\end_inset
+
+ and 33.4 
+\begin_inset Formula $\left(=27.87+0.59\times9.43\right)$
+\end_inset
+
+.
+ In terms of control variable NTX/creat 
+\begin_inset Formula $\left(\omega_{1}^{t}=-.05\right)$
+\end_inset
+
+and mvh 
+\begin_inset Formula $\left(\omega_{2}^{t}=0.23\right)$
+\end_inset
+
+ signifiganly contribuited to tibal properties, and NTX/creat 
+\begin_inset Formula $\left(\omega_{1}^{r}=-0.08\right)$
+\end_inset
+
+to radial properties.
+\end_layout
+
+\begin_layout Standard
+\align left
+Column 2 of Table 3 discriminates the strength and maturity paramaters by
+ sex.
+ Although boys had more strength, girls had markedly better bone property
+ effects.
+ Independant of strength, girls had greater maturation effects on radial
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $(25.96=28.12-2.16,p<0.01)$
+\end_inset
+
+ and
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ tibial 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $(25.37=42.70-16.33,p<0.01)$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ properties.
+ They also had a greater grip 
+\begin_inset Formula $\left(1.73=4.79-3.06,p<0.05\right)$
+\end_inset
+
+, and isometric 
+\begin_inset Formula $\left(0.21=0.81-0.60,p<0.05\right)$
+\end_inset
+
+ effects.
+ Girls total maturation effect was 31.01 
+\begin_inset Formula $\left(42.30-11.21,p<0.01\right)$
+\end_inset
+
+ amd 27.50 
+\begin_inset Formula $\left(=42.30-21.1,p<0.01\right)$
+\end_inset
+
+ points higher for radial and tibial properties, respectively.
+ 
+\end_layout
+
+\begin_layout Standard
+*
+\end_layout
+
+\begin_layout Standard
+Krull, J.
+ L., and D.
+ P.
+ MacKinnon.
+ 2001.
+ Multilevel modeling of individual and group level mediated effects.
+ Multivariate Behavorial Research 36: 249–277.
+ Preacher, K.
+ J., M.
+ J.
+ Zyphur, and Z.
+ Zhang.
+ 2010.
+ A general multilevel SEM framework for assessing multilevel mediation.
+ Psychological Methods 15: 209–233.
+\end_layout
+
+\end_body
+\end_document
