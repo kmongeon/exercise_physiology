@@ -1,0 +1,87 @@
+/*
+	integ
+
+*!  VERSION 1.1.2  07nov2014
+
+*/
+
+VERSION 14.0
+
+INCLUDE _std_medium
+DEFINE _dlght 270
+INCLUDE header
+HELP hlp1, view("help integ")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+        setscale_hadj resource INTEG_DLG_HSCALE
+END
+
+DIALOG main,	label(resource INTEG_DLG_TITLE) tabtitle(resource LBL_TAB_MAIN)
+BEGIN
+        TEXT	tx_yvar		_lft	_top	_cwd1	.,		/*
+		*/	label(resource LBL_Y_VARIABLE)
+
+        VARNAME	vn_yvar		@	_ss	_vnwd	.,		/*
+        	*/      numeric						/*
+		*/	label(resource LBL_Y_VARIABLE)
+
+        TEXT	tx_xvar		_lft2	_top	_cwd1	.,		/*
+		*/	label(resource LBL_X_VARIABLE)
+
+        VARNAME	vn_xvar		@	_ss	_vnwd	.,		/*
+        	*/      numeric						/*
+		*/	label(resource LBL_X_VARIABLE)
+
+        TEXT	tx_gen		_lft	_ls	_iwd	.,		/*
+		*/	label(resource LBL_GENERATE_NEW_VARIABLE)
+
+        EDIT   	ed_gen		@	_ss	_vnwd	.,		/*
+		*/	label(resource LBL_GENERATE_VARIABLE_NO_COLON)	/*
+		*/	option(generate)
+
+	GROUPBOX gb_rule	@	+35	_iwd	_ht4,		/*
+		*/	label(resource INTEG_MAIN_GB_RULE)
+
+	RADIO	rb_cubic	_indent	_ss	_inwd	.,		/*
+		*/	label(resource INTEG_MAIN_RB_CUBIC)		/*
+		*/	first						/*
+		*/	option(NONE)
+
+	RADIO	rb_trapezoid	@	_ss	@	.,		/*
+		*/	label(resource INTEG_MAIN_RB_TRAPEZOID)		/*
+		*/	last						/*
+		*/      option(trapezoid)
+
+	SPINNER	sp_initial	_lft	+45	_spwd	.,		/*
+		*/	min(0) max(10000)				/*
+		*/	default(0)					/*
+		*/	label(resource INTEG_MAIN_SP_INITIAL)		/*
+		*/	option(initial)
+
+	TEXT	tx_init		_spsep	@	_sprb	.,		/*
+		*/	label(resource INTEG_MAIN_SP_INITIAL)
+
+        CHECKBOX ck_replace     _lft	_ls     _iwd    .,              /*
+                */      label(resource LBL_OVERWRITE_THE_EXISTING_VARIABLE) /*
+		*/	option(replace)
+END
+
+INCLUDE byifin
+
+PROGRAM command
+BEGIN
+	INCLUDE _by_pr
+	put "integ "
+	varlist main.vn_yvar
+	varlist main.vn_xvar
+	INCLUDE _ifin_pr
+	beginoptions
+		optionarg main.ed_gen
+		option main.ck_replace
+		option radio(main rb_cubic rb_trapezoid)
+		optionarg /hidedefault main.sp_initial
+	endoptions
+END
+

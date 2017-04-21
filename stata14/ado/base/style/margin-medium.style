@@ -1,0 +1,10 @@
+*! version 1.0.1  23feb2016
+sequence 1500
+
+* label "Medium"
+label resource "MARGIN-MEDIUM"
+
+set left   3.5
+set right  3.5
+set top    3.5
+set bottom 3.5

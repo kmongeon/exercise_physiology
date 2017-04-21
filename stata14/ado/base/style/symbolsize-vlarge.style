@@ -1,0 +1,9 @@
+*! version 1.0.1  23feb2016
+sequence 1170
+
+* label "v Large"
+label resource "SYMBOLSIZE-VLARGE"
+
+set val 3.125
+
+* 9 pt based on a 4 inch high graph

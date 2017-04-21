@@ -1,0 +1,9 @@
+*! version 1.0.1  22feb2016
+sequence 2140
+
+* label "Medium small"
+label resource "GSIZE-MEDSMALL"
+
+set val 3.4722
+
+* 10 pt based on a 4 inch high graph

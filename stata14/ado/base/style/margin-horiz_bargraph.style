@@ -1,0 +1,10 @@
+*! version 1.0.1  23feb2016
+sequence 4110
+
+* label "Horiz_bargraph"
+label resource "MARGIN-HORIZ_BARGRAPH"
+
+set left     0
+set right  3.5
+set top    3.5
+set bottom 3.5

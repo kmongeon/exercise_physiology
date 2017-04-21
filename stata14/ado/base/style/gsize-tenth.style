@@ -1,0 +1,7 @@
+*! version 1.0.1  22feb2016
+sequence 5100
+
+* label "Tenth"
+label resource "GSIZE-TENTH"
+
+set val 10

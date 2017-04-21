@@ -1,0 +1,16 @@
+*! version 1.1.0  11nov2014
+*! Stata Import menu
+
+FILE_IMPORT stImport {
+	"FILE_IMPORT_EXCEL_DLG"		"view dialog import_excel_dlg"
+	"FILE_IMPORT_DELIMITED_DLG"	"view dialog import_delimited_dlg"
+	"FILE_IMPORT_INFIX_DB"		"DB infix"
+	"FILE_IMPORT_INFILE_DICT_DB"	"DB infile_dict"
+	"FILE_IMPORT_INFILE_FREE_DB"	"DB infile_free"
+	"FILE_IMPORT_SASXPORT_DB"	"DB import_sasxport"
+#if WINDOWS {
+	"FILE_IMPORT_HAVER_DLG"		"view dialog import_haver_dlg"
+}
+	"FILE_IMPORT_ODBC_LOAD_DB"	"DB odbc_load"
+	"FILE_IMPORT_XMLUSE_DB"		"DB xmluse"
+}

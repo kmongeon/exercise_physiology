@@ -1,0 +1,9 @@
+*! version 1.0.1  22feb2016
+sequence 2190
+
+* label "Huge"
+label resource "GSIZE-HUGE"
+
+set val 6.9444
+
+* 20 pt based on a 4 inch high graph

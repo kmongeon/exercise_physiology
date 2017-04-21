@@ -1,0 +1,7 @@
+*! version 1.0.1  22feb2016
+sequence 5500
+
+* label "Full"
+label resource "GSIZE-FULL"
+
+set val 100

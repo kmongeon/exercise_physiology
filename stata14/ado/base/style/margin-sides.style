@@ -1,0 +1,10 @@
+*! version 1.0.1  23feb2016
+sequence 3100
+
+* label "Sides"
+label resource "MARGIN-SIDES"
+
+set left   3.5
+set right  3.5
+set top      0
+set bottom   0

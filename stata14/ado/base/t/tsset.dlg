@@ -1,0 +1,31 @@
+/*
+  tsset
+
+*!  VERSION 2.1.0  16dec2014
+
+*/
+
+VERSION 14.0
+
+INCLUDE _std_medium
+DEFINE _dlght 280
+INCLUDE header
+
+HELP hlp1, view("help tsset")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+	create BOOLEAN isMI
+	isMI.setfalse
+	create BOOLEAN isCleared
+	isCleared.setfalse
+	setscale_hadj resource TSSET_DLG_HSCALE
+END
+
+DIALOG main, label(resource TSSET_DLG_TITLE)	///
+	tabtitle(resource LBL_TAB_MAIN)
+BEGIN
+
+INCLUDE tsset
+

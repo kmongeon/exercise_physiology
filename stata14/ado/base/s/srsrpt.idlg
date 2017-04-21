@@ -1,0 +1,77 @@
+/*
+  srsrpt.idlg  Used with mean, proportion, ratio, and total
+
+*! VERSION 1.2.2  20may2015
+
+*/
+
+SCRIPT rpt_PREINIT
+BEGIN
+	create STRING rpt_bu_fmtcoefResults
+END
+
+SCRIPT rpt_POSTINIT
+BEGIN
+	program rpt_bu_fmtcoef_ckResults
+END
+
+DIALOG rpt, tabtitle(resource LBL_TAB_REPORTING)
+BEGIN
+  DEFINE _x _lft
+  DEFINE _cx _spr2b
+  DEFINE _y _top
+  INCLUDE _sp_level
+
+  CHECKBOX ck_noheader		_lft    _ls       _iwd      .,		///
+	label(resource LBL_SUPPRESS_TABLE_HEADER)			///
+	clickon(program check_header)					///
+	clickoff(program check_header)					///
+	option(noheader)
+
+  CHECKBOX ck_nolegend		@	_ms	@	.,		///
+	label(resource LBL_SUP_TABLE_LEGEND)				///
+	option(nolegend)
+
+  DEFINE _x _lft
+  DEFINE _y _ls
+  INCLUDE _bu_coef_table_reporting
+END
+
+PROGRAM rpt_bu_fmtcoef_getOpts
+BEGIN
+	call create CHILD fmt_coef_table_reporting AS rpt_bu_fmtcoef,	///
+		message("-cformat_only-")
+	call rpt_bu_fmtcoef.setExitString rpt_bu_fmtcoefResults
+	call rpt_bu_fmtcoef.setExitAction "program rpt_bu_fmtcoef_ckResults"
+END
+
+PROGRAM rpt_bu_fmtcoef_ckResults
+BEGIN
+	if rpt_bu_fmtcoefResults {
+		call rpt.bu_fmtcoef.formatlabel "resource LBL_BU_SET_TABLE_FORMATS_FMT" " *"
+	}
+	else {
+		call rpt.bu_fmtcoef.formatlabel "resource LBL_BU_SET_TABLE_FORMATS_FMT" "  "
+	}
+END
+
+
+PROGRAM check_header
+BEGIN
+	if rpt.ck_noheader {
+		call gaction rpt.ck_nolegend.disable
+	}
+	if !rpt.ck_noheader {
+		call gaction rpt.ck_nolegend.enable
+	}
+END
+
+
+PROGRAM srsrpt_output
+BEGIN
+	optionarg /hidedefault rpt.sp_level
+	option rpt.ck_noheader
+	option rpt.ck_nolegend
+	put " " rpt_bu_fmtcoefResults
+END
+

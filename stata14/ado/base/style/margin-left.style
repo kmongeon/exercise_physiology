@@ -1,0 +1,10 @@
+*! version 1.0.1  23feb2016
+sequence 2100
+
+* label "Left"
+label resource "MARGIN-LEFT"
+
+set left   3
+set right  0
+set top    0
+set bottom 0

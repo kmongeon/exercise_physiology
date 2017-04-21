@@ -1,0 +1,298 @@
+/*
+	irt model options
+
+*!  VERSION 1.1.2  19may2015
+*/
+
+VERSION 14.0
+
+INCLUDE _std_large
+DEFINE _dlght 330
+INCLUDE header
+
+HELP hlp1, view("help irt")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+	create STRING parent_name
+	create STRING model_name
+	create STRING byoutput
+	create STRING svyoutput
+	create BOOLEAN hassubpop
+	create BOOLEAN svyhasoptions
+	create DOUBLE isSvy
+	create STRING model_svyset
+
+	model_name.setvalue "irt "
+	parent_name.setvalue class PARENT._dlg_rsrcname
+	parent_name.withvalue model_name.append			///
+		class @.ModelDisplayName.value
+	model_name.append " - Advanced options"
+	model_name.withvalue settitle `"@"'
+	parent_name.withvalue isSvy.setvalue			///
+		class @.hasSvy.value
+	
+	program check_model
+	script se_createAsSvyInternalML
+	setscale_hadj resource IRT_MODEL_OPTIONS_DLG_HSCALE
+END
+
+PROGRAM check_model
+BEGIN
+	if model_name.isneq("irt 3pl - Advanced options") {
+		call model.ck_sepguessing.hide
+	}
+	else {
+		call model.ck_sepguessing.show
+	}
+	if isSvy {
+		call se.ck_svy.seton
+	}
+	else {
+		call se.ck_svy.setoff
+	}
+END
+
+PROGRAM POSTINIT_PROGRAM
+BEGIN
+	call script sub_set_by_on
+	if isSvy {
+		call se.ck_svy.seton
+	}
+	else {
+		call se.ck_svy.setoff
+	}
+	call program se_setFinalInitState
+END
+
+DIALOG model, tabtitle(resource LBL_TAB_MODEL)
+BEGIN
+  CHECKBOX ck_listwise			_lft	_top	_iwd	.,	///
+	option(listwise)						///
+	label(resource IRT_MODEL_OPTIONS_MODEL_CK_LISTWISE)
+  CHECKBOX ck_sepguessing		@	_ms	@	.,	///
+	option(sepguessing)						///
+	label(resource IRT_MODEL_OPTIONS_MODEL_CK_SEPGUESSING)
+END
+
+INCLUDE sub_by_ifin_over_subpop
+INCLUDE weights_fpi
+INCLUDE se
+
+SCRIPT rpt_POSTINIT
+BEGIN
+	create STRING rpt_bu_fmtcoefResults
+	program rpt_bu_fmtcoef_ckResults
+END
+
+DIALOG rpt, tabtitle(resource LBL_TAB_REPORTING)
+BEGIN
+  DEFINE _x _lft
+  DEFINE _cx _spr
+  DEFINE _y _top
+  INCLUDE _sp_level
+  
+  CHECKBOX ck_notable 			_lft    _ls	_iwd	.,	///
+	option("notable")						///
+  	label(resource LBL_SUPPRESS_COEFFICIENT_TABLE)
+
+  CHECKBOX ck_noheader 			_lft    _ms	_iwd	.,	///
+	option("noheader")						///
+  	label(resource LBL_SUPPRESS_OUTPUT_HEADER)
+
+  DEFINE _x _lft
+  DEFINE _y _ls
+  DEFINE _cx _iwd
+  INCLUDE _report_columns
+	
+  DEFINE _x _lft
+  DEFINE _y _ls
+  INCLUDE _bu_coef_table_reporting
+END
+
+INCLUDE fmt_coef_table_reporting_pr
+
+DIALOG int,  tabtitle(resource LBL_TAB_INTEGRATION)
+BEGIN
+  TEXT	tx_intm				_lft	_top	_iwd	.,	///
+	label(resource LBL_INTEGRATION_METHOD)
+  COMBOBOX cb_intm			@	_ss	325	.,	///
+	dropdownlist							///
+	contents(int_intm_contents)					///
+	values(int_intm_values)						///
+	onselchangelist(int_intm_sel)					///
+	option(intmethod)						///
+	label(resource LBL_INTEGRATION_METHOD)
+
+  SPINNER sp_intp			@	_ls	_spwd	.,	///
+	min(1) default(7)						///
+	option(intpoints)						///
+	label(resource LBL_NUMBER_OF_INTEGRATION_POINTS)
+  TEXT	tx_intp				_spsep	@	200	.,	///
+	label(resource LBL_NUMBER_OF_INTEGRATION_POINTS)
+END
+
+LIST int_intm_contents
+BEGIN
+	resource LBL_DEFAULT
+	resource LBL_MEAN_VARIANCE_ADAPTIVE_GAUSS_HERMITE_QUAD
+	resource LBL_MODE_CURVATURE_ADAPTIVE_GAUSS_HERMITE_QUAD
+	resource LBL_NONADAPTIVE_GAUSS_HERMITE_QUADRATURE
+END
+
+LIST int_intm_values
+BEGIN
+	""
+	"mvaghermite"
+	"mcaghermite"
+	"ghermite"
+END
+
+INCLUDE max_ml
+
+PROGRAM get_by_output
+BEGIN
+	call PARENT.callthru `"pbyoutput.setvalue `""'"'
+	if sub.ck_by.isvisible() & sub.ck_by {
+		require sub.vl_by
+		call byoutput.append "by "
+		call sub.vl_by.withvalue byoutput.append @
+		call byoutput.append ", sort: "
+		call byoutput.withvalue PARENT.callthru		///
+			`"pbyoutput.setvalue `"@"'"'
+	}
+END
+
+PROGRAM get_svyoutput
+BEGIN
+	call PARENT.callthru `"psvyoutput.setvalue `""'"'
+	if se.ck_svy {
+		call hassubpop.setfalse
+		call svyhasoptions.setfalse
+		
+		call svyoutput.append "svy" 
+		if se_svyvcetype.equals(resource SE_LBL_LINEARIZED) {
+			call svyoutput.append " linearized"
+		}
+		if se_svyvcetype.equals(resource SE_LBL_BOOTSTRAP) {
+			call svyoutput.append " bootstrap"
+		}
+		if se_svyvcetype.equals(resource SE_LBL_BRR) {
+			call svyoutput.append " brr"
+		}
+		if se_svyvcetype.equals(resource SE_LBL_JACKKNIFE) {
+			call svyoutput.append " jackknife"
+		}
+		if se_svyvcetype.equals(resource SE_LBL_SDR) {
+			call svyoutput.append " sdr"
+		}
+		
+		if sub.vn_subpop.isvisible() | sub.ex_subif.isvisible() {
+			if sub.vn_subpop | sub.ex_subif {
+				call hassubpop.settrue
+			}
+		}
+		if hassubpop {
+			call svyhasoptions.settrue
+		}
+		if se.en_dof.isvisible() & se.en_dof {
+			call svyhasoptions.settrue
+		}
+		if se.ck_mse.isvisible() & se.ck_mse {
+			call svyhasoptions.settrue
+		}
+		if se.ck_nodots.isvisible() & se.ck_nodots {
+			call svyhasoptions.settrue
+		}
+		if se.ed_bsn.isvisible() & se.ed_bsn {
+			call svyhasoptions.settrue
+		}
+		if se.ed_hadamard.isvisible() & se.ed_hadamard {
+			call svyhasoptions.settrue
+		}
+		if se.ed_fay.isvisible() & se.ed_fay {
+			call svyhasoptions.settrue
+		}
+		if svyhasoptions {
+			call svyoutput.append ","
+		}
+		
+		if hassubpop {
+			call svyoutput.append " subpop("
+			if sub.vn_subpop {
+				call sub.vn_subpop.withvalue svyoutput.append @
+			}
+			if sub.ex_subif {
+				call svyoutput.append " if "
+				call svyoutput.append sub.ex_subif
+			}
+			call svyoutput.append ")"
+		}
+		if se.en_dof.isvisible() & se.en_dof {
+			call svyoutput.append " dof("
+			call se.en_dof.withvalue svyoutput.append @
+			call svyoutput.append ")"
+		}
+		if se.ck_mse.isvisible() & se.ck_mse {
+			call svyoutput.append " mse"
+		}
+		if se.ck_nodots.isvisible() & se.ck_nodots {
+			call svyoutput.append " nodots"
+		}
+		if se.ed_bsn.isvisible() & se.ed_bsn {
+			call svyoutput.append " bsn("
+			call se.ed_bsn.withvalue svyoutput.append @
+			call svyoutput.append ")"
+		}
+		if se.ed_hadamard.isvisible() & se.ed_hadamard {
+			call svyoutput.append " hadamard("
+			call se.ed_hadamard.withvalue svyoutput.append @
+			call svyoutput.append ")"
+		}
+		if se.ed_fay.isvisible() & se.ed_fay {
+			call svyoutput.append " fay("
+			call se.ed_fay.withvalue svyoutput.append @
+			call svyoutput.append ")"
+		}
+		
+		call svyoutput.append ": "
+		call svyoutput.withvalue PARENT.callthru		///
+			`"psvyoutput.setvalue `"@"'"'
+	}
+END
+
+PROGRAM command
+BEGIN
+	if se.ck_svy {
+		call model_svyset.setstring char _dta[_svy_version]
+		if model_svyset.equals("") {
+			call create STRING _MSG_TMP
+			call _MSG_TMP.format 				   	///
+				"resource SE_MSGBOX_SVY_SETTINGS_REQUIRED_FMT" 	///
+				"resource LBL_SURVEY_SETTINGS" 	   		///
+				"resource SE_TITLE_SE_ROBUST"
+			stopbox stop "class _MSG_TMP.value"
+// Survey estimation commands require survey settings. See "Survey settings" on the "SE/Robust" tab.
+		}
+	}
+	call byoutput.setvalue ""
+	call svyoutput.setvalue ""
+	call program get_svyoutput
+	call program get_by_output
+	put " " /program ifin_output
+	put " " /program weights_output
+	beginoptions
+		option model.ck_listwise
+		option model.ck_sepguessing
+		put " " /program se_output
+		optionarg /hidedefault rpt.sp_level
+		option rpt.ck_notable
+		option rpt.ck_noheader
+		INCLUDE _report_columns_pr
+		put " " rpt_bu_fmtcoefResults
+		optionarg /hidedefault int.cb_intm
+		optionarg /hidedefault int.sp_intp
+		put " " /program max_output
+	endoptions
+END

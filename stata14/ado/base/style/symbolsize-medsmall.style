@@ -1,0 +1,9 @@
+*! version 1.0.1  23feb2016
+sequence 1130
+
+* label "Medium-small"
+label resource "SYMBOLSIZE-MEDSMALL"
+
+set val 1.25
+
+* 3.6 pt based on a 4 inch high graph

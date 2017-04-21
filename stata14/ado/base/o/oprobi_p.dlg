@@ -1,0 +1,21 @@
+/*
+	predict (after oprobit)
+
+*!  VERSION 1.2.0  06nov2014
+
+*/
+
+VERSION 14.0
+
+INCLUDE _std_large
+INCLUDE header
+
+HELP hlp1, view("help oprobit postestimation")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+        setscale_hadj resource OPROBI_P_DLG_HSCALE
+END
+
+INCLUDE ologit_common_p

@@ -1,0 +1,189 @@
+/*
+  heckman , twostep
+
+*!  VERSION 1.2.1  19may2015
+
+  keyword:  eclass
+
+*/
+
+VERSION 14.0
+
+INCLUDE _std_large
+INCLUDE header
+HELP hlp1, view("help heckman")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+	script se_createAsConventJknifeBstrap
+        setscale_hadj resource HECKMAN_2STEP_DLG_HSCALE
+END
+
+
+DIALOG main, label(resource HECKMAN_2STEP_DLG_TITLE)			///
+		tabtitle(resource LBL_TAB_MODEL)
+BEGIN
+  TEXT tx_dv 		_lft	_top	_vnwd	.,			///
+	label(resource LBL_DEPVAR)
+  VARNAME vn_dv		@ 	_ss	@	.,			///
+	ts								///
+	label(resource LBL_DEPVAR)
+
+  TEXT tx_iv		_vlx	_top	160	.,			///
+	label(resource LBL_INDDEPVAR)
+  VARLIST vl_iv		@	_ss	_vlwd	.,			///
+	fv ts								///
+	allowcat							///
+	label(resource LBL_INDDEPVAR)
+  CHECKBOX ck_nocons   @           _ms       @          .,		///
+		label(resource LBL_NOCONSTANT)				///
+		option(noconstant)
+
+  CHECKBOX ck_sdv      _lft        _ls       _vnwd       .,		///
+		label(resource LBL_SELECTION_DV)			///
+		onclickon(gaction main.vn_sdv.enable)			///
+		onclickoff(gaction main.vn_sdv.disable)
+
+  DEFINE y @y
+  VARNAME  vn_sdv      @           _ss       @           .,		///
+		label(resource LBL_SELECTION_VARIABLE) ts
+
+  TEXT     tx_siv      _vlx        y         _vlwd       .,		///
+		label(resource LBL_SELECTION_INDEPENDENT_VARIABLES)
+
+  VARLIST  vl_siv      @           _ss       @           .,		///
+		label(resource LBL_SELECTION_INDEPENDENT_VARIABLES_NO_COLON)	///
+		allowcat ts fv
+
+  CHECKBOX ck_snocon   @           _ms       @           .,		///
+		label(resource LBL_SUPPRESS_SELECTION_CONSTANT_TERM)	///
+		option(noconstant)
+
+  GROUPBOX gb_rho      _lft        _xls      _iwd        _ht9,		///
+		label(resource HECKMAN_2STEP_MAIN_GB_RHO)
+
+  RADIO    rb_sigma    _indent     _ms       _inwd       .,		///
+		first							///
+		label(resource HECKMAN_2STEP_MAIN_RB_SIGMA)		///
+		option("rhosigma")
+
+  RADIO    rb_trunc    @           _ss       @           .,		///
+		label(resource HECKMAN_2STEP_MAIN_RB_TRUNC)		///
+		option("rhotrunc")
+
+  RADIO    rb_limit    @           _ss       @           .,		///
+		label(resource HECKMAN_2STEP_MAIN_RB_LIMIT)		///
+		option("rholimited")
+
+  RADIO    rb_force    @           _ss       @           .,		///
+		last 							///
+		label(resource HECKMAN_2STEP_MAIN_RB_FORCE)		///
+		option("rhoforce")
+END
+
+PROGRAM heckman_model_subopts
+BEGIN
+	option main.ck_snocon
+END
+
+PROGRAM heckman_model_opts
+BEGIN
+	if main.ck_sdv {
+		varlist main.vn_sdv
+		put " = "
+	}
+	require main.vl_siv
+	put " " main.vl_siv
+	if main.ck_snocon {
+		beginoptions
+			put /program heckman_model_subopts
+		endoptions
+	}
+END
+
+PROGRAM heckman_model_opts_output
+BEGIN
+	option main.ck_nocons
+	put "twostep select("
+	put /program heckman_model_opts
+	put ")"
+	option radio(main rb_sigma rb_trunc rb_limit rb_force)
+END
+
+PROGRAM heckman_model_output
+BEGIN
+	varlist main.vn_dv [main.vl_iv]
+	put " "
+	if !main.vl_iv & main.ck_nocons {
+	  call create STRING _MSG_TMP
+          call _MSG_TMP.format						/// 
+		"resource LBL_MSGBOX_IS_SELECTED_WITHOUT_INDVARS_FMT" 	///
+	 	"resource LBL_NOCONSTANT" 
+		stopbox stop "class _MSG_TMP.value"
+// "Suppress constant term" is selected without independent variables.
+	}
+END
+
+INCLUDE byifin
+INCLUDE se
+
+SCRIPT rpt_POSTINIT
+BEGIN
+	create STRING rpt_bu_fmtcoefResults
+	program rpt_bu_fmtcoef_ckResults
+	create STRING rpt_bu_facvarsResults
+        program rpt_bu_facvars_ckResults
+END
+
+DIALOG rpt, tabtitle(resource LBL_TAB_REPORTING)
+BEGIN
+  DEFINE _x _lft
+  DEFINE _cx _spr2b
+  DEFINE _y _top
+  INCLUDE _sp_level
+
+  CHECKBOX ck_first  _lft      _ls      _cwd1      .,			/*
+		*/ label(resource LBL_REPORT_FIRST_STEP_PROBIT_ESTIMATES) /*
+		*/ option("first")					/*
+		*/
+
+  GROUPBOX gb_genvar _lft      _ls      _iwd       _ht4h,		/*
+  		*/ label(resource LBL_GEN_NEW_VARIABLES)
+  TEXT     tx_nshaz  _ilft     _ss      _inwd      .,			/*
+		*/ label(resource LBL_NONSELECTION_HAZARD_VARIABLE)	/*
+		*/
+  EDIT     ed_nshaz  @         _ss      _vnwd      .,			/*
+		*/ label(resource LBL_NONSELECTION_HAZARD)		/*
+		*/ option("nshazard")					/*
+		*/
+
+  DEFINE _x _lft
+  DEFINE _y _xxls
+  INCLUDE _bu_factor_vars_reporting
+
+  DEFINE _x _lft2
+  DEFINE _y @
+  INCLUDE _bu_coef_table_reporting
+END
+
+INCLUDE fmt_coef_table_reporting_pr
+INCLUDE factor_vars_reporting_pr
+
+PROGRAM command
+BEGIN
+	INCLUDE _by_pr
+	put "heckman "
+	put " " /program heckman_model_output
+	INCLUDE _ifin_pr
+	beginoptions
+		put " " /program heckman_model_opts_output
+		put " " /program se_output
+		optionarg /hidedefault rpt.sp_level
+		option rpt.ck_first
+		optionarg rpt.ed_nshaz
+		put " " rpt_bu_facvarsResults
+		put " " rpt_bu_fmtcoefResults
+	endoptions
+END
+

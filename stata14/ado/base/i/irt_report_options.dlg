@@ -1,0 +1,138 @@
+/*
+	irt report options
+
+*!  VERSION 1.1.1  19feb2015
+*/
+
+VERSION 14.0
+
+INCLUDE _std_large
+DEFINE _dlght 190
+INCLUDE header
+
+HELP hlp1, view("help irt")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+	create STRING parent_name
+	create STRING model_name
+
+	parent_name.setvalue class PARENT._dlg_rsrcname
+	parent_name.withvalue model_name.setvalue			///
+		class @.ModelDisplayName.value
+	
+	program check_report_options
+	setscale_hadj resource IRT_REPORT_OPTIONS_DLG_HSCALE
+END
+
+PROGRAM check_report_options
+BEGIN
+	if model_name.isneq("3pl") {
+		call main.tx_clabel.disable
+		call main.ed_clabel.disable
+	}
+	else {
+		call main.tx_clabel.enable
+		call main.ed_clabel.enable
+	}
+	if model_name.iseq("1pl") | model_name.iseq("2pl") | 		///
+		model_name.iseq("3pl") {
+		call main.ck_seqlabel.disable
+	}
+	else {
+		call main.ck_seqlabel.enable
+	}
+END
+
+DIALOG main, tabtitle(resource LBL_TAB_MAIN)				///
+	label(resource IRT_REPORT_OPTIONS_DLG_TITLE)
+BEGIN
+  GROUPBOX gb_plabel			_lft	_top	_iwd	_ht10,	///
+	label(resource IRT_REPORT_OPTIONS_MAIN_GB_PLABEL)
+  EDIT 	   ed_alabel			_ilft	_ms	_en14wd	.,	///
+	option(alabel)							///
+	label(resource IRT_REPORT_OPTIONS_MAIN_ED_ALABEL)
+  TEXT	   tx_alabel			_en14sep @	300	.,	///
+	label(resource IRT_REPORT_OPTIONS_MAIN_ED_ALABEL)
+  EDIT 	   ed_blabel			_ilft	_ms	_en14wd	.,	///
+	option(blabel)							///
+	label(resource IRT_REPORT_OPTIONS_MAIN_ED_BLABEL)
+  TEXT	   tx_blabel			_en14sep @	300	.,	///
+	label(resource IRT_REPORT_OPTIONS_MAIN_ED_BLABEL)
+  EDIT 	   ed_clabel			_ilft	_ms	_en14wd	.,	///
+	option(clabel)							///
+	label(resource IRT_REPORT_OPTIONS_MAIN_ED_CLABEL)
+  TEXT	   tx_clabel			_en14sep @	300	.,	///
+	label(resource IRT_REPORT_OPTIONS_MAIN_ED_CLABEL)
+  CHECKBOX ck_seqlabel			_ilft	_ms	_ibwd	.,	///
+	option(seqlabel)						///
+	label(resource IRT_REPORT_OPTIONS_MAIN_CK_SEQLABEL)
+  CHECKBOX ck_post			_lft	+45	@	.,	///
+	option(post)							///
+	label(resource IRT_REPORT_OPTIONS_MAIN_CK_POST)
+END
+
+SCRIPT rpt_POSTINIT
+BEGIN
+	create STRING rpt_bu_fmtcoefResults
+	program rpt_bu_fmtcoef_ckResults
+END
+
+DIALOG rpt, tabtitle(resource LBL_TAB_REPORTING)
+BEGIN
+  DEFINE _x _lft
+  DEFINE _cx _spr
+  DEFINE _y _top
+  INCLUDE _sp_level
+  
+  CHECKBOX ck_verbose  			_lft	_ls	_cwd1	.,	///
+  	option("verbose")						///
+	label(resource IRT_REPORT_OPTIONS_RPT_CK_VERBOSE)
+
+  DEFINE _x _lft
+  DEFINE _y _ls
+  DEFINE _cx _iwd
+  INCLUDE _report_columns	
+	
+  DEFINE _x _lft
+  DEFINE _y _ls
+  INCLUDE _bu_coef_table_reporting
+END
+
+INCLUDE fmt_coef_table_reporting_pr
+
+PROGRAM command
+BEGIN
+	if main.ed_alabel {
+		put " alabel(" 
+		put main.ed_alabel
+		put ")"
+	}
+	if main.ed_blabel {
+		put " blabel(" 
+		put main.ed_blabel
+		put ")"
+	}
+	if main.ed_clabel.isenabled() & main.ed_clabel {
+		put " clabel(" 
+		put main.ed_clabel
+		put ")"
+	}
+	if main.ck_seqlabel.isenabled() & main.ck_seqlabel {
+		put " seqlabel"
+	}
+	if main.ck_post {
+		put " post"
+	}
+	if rpt.sp_level.isneq("95") {
+		put " level("
+		put rpt.sp_level
+		put ")"
+	}
+	if rpt.ck_verbose {
+		put " verbose"
+	}
+	INCLUDE _report_columns_pr
+	put " " rpt_bu_fmtcoefResults
+END

@@ -1,0 +1,7 @@
+*! version 1.0.1  22feb2016
+sequence 5200
+
+* label "Quarter"
+label resource "GSIZE-QUARTER"
+
+set val 25

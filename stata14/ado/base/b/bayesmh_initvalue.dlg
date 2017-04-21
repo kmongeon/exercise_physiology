@@ -1,0 +1,179 @@
+/*
+
+*!  VERSION 1.0.8  08nov2016
+
+*/
+
+
+VERSION 14.0
+
+INCLUDE _std_large
+DEFINE _dlght 360
+INCLUDE header
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+	setscale_hadj resource BAYESMH_INITVALUE_DLG_HSCALE
+	create STRING s_output
+	create ARRAY main_sparams_list
+	create ARRAY main_mparams_list
+	create STRING sparaspec_str
+	create STRING mparaspec_str
+	create STRING paraspec_tmp
+
+	create STRING dlgname
+	dlgname.storeDialogClassName	
+	create STRING cmdName
+	create STRING cmdStr
+	
+	cmdStr.setvalue ""
+	cmdName.setvalue ""
+	cmdName.setvalue e(cmd)
+	cmdStr.setvalue e(cmdline)
+	
+	program load_paramslist
+END
+
+PROGRAM load_paramslist
+BEGIN
+	call paraspec_tmp.setvalue s(params)
+	if paraspec_tmp.equals("") {
+		if cmdName.equals("bayesmh") & !cmdStr.equals("") {
+			put "bayesmh_parse_params "
+			put cmdStr
+			stata hidden immediate
+		}
+	}
+	
+	call paraspec_tmp.setvalue s(params)
+	if !paraspec_tmp.equals("") {
+		put "bayesmh_wrk_dlg " 
+		put dlgname
+		put " main_sparams_list"
+		put `" "s(eqnames) s(scparams)""'
+		put " 0"
+		stata hidden immediate
+
+		put "bayesmh_wrk_dlg " 
+		put dlgname
+		put " main_mparams_list"
+		put `" "s(matparams)""'
+		put " 0"
+		stata hidden immediate
+	}
+	
+	call main.cb_sparams.repopulate
+	call main.cb_mparams.repopulate
+END
+
+PROGRAM POSTINIT_PROGRAM
+BEGIN
+	call main.cb_sparams.repopulate
+	call main.cb_mparams.repopulate
+END
+
+DIALOG main, tabtitle(resource LBL_TAB_MAIN)				///
+	label(resource BAYESMH_INITVALUE_TITLE)
+BEGIN
+  GROUPBOX	gb_sadd		_lft	_top	_iwd	_ht7h,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_SPARAMS)
+
+  TEXT		tx_sparams	_ilft	_ms	200	.,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_SPARAMS_C)
+  DEFINE holdy @y
+  COMBOBOX	cb_sparams	@	_ss	@	.,		///
+	nomemory							///
+	dropdown							///
+	append								///
+	contents("main_sparams_list")					///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_SPARAMS_C)
+  TEXT		tx_sinitvalue	240	holdy	160	.,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_INIT_VALUE)
+  EDIT		ed_sinitvalue	@	_ss	@	.,		///
+	label(resource BAYESMH_INITVALUE_MAIN_ED_INIT_VALUE)
+  BUTTON	bu_sadd		@	+30	80	.,		///
+	onpush(program main_add_scalar)					///
+	label(resource BAYESMH_INITVALUE_MAIN_BU_ADD) 
+
+  GROUPBOX 	gb_madd		_lft	+45	_iwd	_ht7h,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_MPARAMS)
+  TEXT		tx_mparams	_ilft	_ms	200	.,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_MPARAMS_C)
+  DEFINE holdy @y
+  COMBOBOX	cb_mparams	@	_ss	@	.,		///
+	nomemory							///
+	dropdown							///
+	append								///
+	contents("main_mparams_list")					///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_MPARAMS_C)
+  TEXT		tx_minitvalue	240	holdy	160	.,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_INIT_VALUE)
+  COMBOBOX	cb_minitvalue	@	_ss	@	.,		///
+	dropdown							///
+	contents(matrix)						///
+	label(resource BAYESMH_INITVALUE_MAIN_CB_INIT_VALUE)
+  BUTTON	bu_minitvalue	400	@	75	.,		///
+	onpush(program show_mparams_matrix)				///
+	tooltip(resource BAYESMH_INITVALUE_MAIN_BU_INIT_VALUE)		///
+	label(resource LBL_INPUT_MATRIX)
+  BUTTON	bu_madd		240	+30	80	.,		///
+	onpush(program main_add_matrix)					///
+	label(resource BAYESMH_INITVALUE_MAIN_BU_ADD)
+	
+  TEXT		tx_vallist	_lft	+45	_iwd	.,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_VALLIST)
+  EDIT		ed_vallist	@	_ss	_iwd	.,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TX_VALLIST)
+ 
+  TEXTBOX	tb_note		@	_ls	@	60,		///
+	label(resource BAYESMH_INITVALUE_MAIN_TB_NOTE)
+END
+
+PROGRAM show_mparams_matrix
+BEGIN
+	call create STRING mparamsResult
+	call create CHILD matrix_input AS mparamsMat
+	if ! _rc {
+		call mparamsMat.setExitString mparamsResult
+		call mparamsMat.setExitAction "program main_getMparamsResult"
+		call mparamsMat.callthru "isChildContext.settrue"
+	}
+END
+
+PROGRAM main_getMparamsResult
+BEGIN
+	call main.cb_minitvalue.repopulate
+	call main.cb_minitvalue.setvalue class mparamsResult.value
+END
+
+PROGRAM main_add_scalar
+BEGIN
+	require main.cb_sparams
+	require main.ed_sinitvalue
+	call s_output.setvalue ""
+	call main.cb_sparams.withvalue s_output.append "@"
+	call main.ed_sinitvalue.withvalue s_output.append " @"
+	call s_output.withvalue main.ed_vallist.append " @"
+	
+	call main.cb_sparams.setvalue ""
+	call main.ed_sinitvalue.setvalue ""
+END
+
+PROGRAM main_add_matrix
+BEGIN
+	require main.cb_mparams
+	require main.cb_minitvalue
+	call s_output.setvalue ""
+	call main.cb_mparams.withvalue s_output.append "@"
+	call main.cb_minitvalue.withvalue s_output.append " @"
+	call s_output.withvalue main.ed_vallist.append " @"
+	
+	call main.cb_mparams.setvalue ""
+	call main.cb_minitvalue.setvalue ""
+END
+
+PROGRAM command
+BEGIN
+	put  main.ed_vallist
+END

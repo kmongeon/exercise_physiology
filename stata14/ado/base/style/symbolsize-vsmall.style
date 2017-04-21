@@ -1,0 +1,9 @@
+*! version 1.0.1  23feb2016
+sequence 1110
+
+* label "v Small"
+label resource "SYMBOLSIZE-VSMALL"
+
+set val .520833
+
+* 1.5 pt based on a 4 inch high graph

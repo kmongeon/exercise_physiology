@@ -1,0 +1,384 @@
+/*
+	import delimited
+
+*!  VERSION 1.1.3  21apr2015
+
+	THIS DIALOG IS ONLY USED ON SOLARIS PLATFORMS. (deprecated)
+*/
+
+VERSION 14.0
+
+INCLUDE _std_large
+DEFINE _dlght 410
+INCLUDE header
+HELP hlp1, view("help import delimited")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+	create STRING rangeResult
+END
+
+SCRIPT POSTINIT
+BEGIN
+	program check_range_result
+END
+
+DIALOG main,label("import delimited - Import delimited text data")
+BEGIN
+  TEXT     tx_using	_lft	_top	_iwd	.,		///
+	label("Text dataset filename:")
+
+  FILE     fi_using	@	_ss	@	.,		///
+	filter("Comma Separated Values (*.csv)|*.csv|Text Files (*.txt)|*.txt|Raw Files (*.raw)|*.raw|All (*.*)|*.*")	///
+	defext(csv) 						///
+	error("Text dataset filename:")				///
+	label("Browse...")
+  DEFINE cbwd 160
+  GROUPBOX gb_delim	_lft	_ls	_iwd	_ht5,		///
+	label("Delimiter")
+  COMBOBOX cb_del	_indent _ss	150	.,		///
+	dropdownlist						///
+	contents(delimiter_list)				///
+	values(delimiter_values)				///
+	onselchangelist(delimiter_list_sel)			///
+	label("Delimiter") 
+  DEFINE holdy @y
+  EDIT     ed_delimit	@ 	_ls	80	.,		///
+  	label("Custom delimiters")
+  TEXT     tx_delimit	+85	@	130	.,		///
+  	label("Custom delimiters")
+  CHECKBOX ck_collapse  _lft2	holdy	_cwd6	.,		///
+  	onclickon(main.ck_asstring.disable)			///
+  	onclickoff(main.ck_asstring.enable)			///
+  	option("collapse")					///
+  	label("Treat sequential delimiters as one")
+  CHECKBOX ck_asstring  _lft2	_ms	@	.,		///
+  	onclickon(main.ck_collapse.disable)			///
+  	onclickoff(main.ck_collapse.enable)			///
+  	option("asstring")					///
+  	label("Use multi-char delimiter")
+  TEXT     tx_firstrow	_lft	_xls	_cwd2	.,		///
+  	label("Use first row as variable names:")
+  DEFINE holdy @y
+  COMBOBOX cb_firstrow	@ 	_ss	cbwd	.,		///
+ 	dropdownlist						///
+ 	contents(firstrow_list)					///
+	values(firstrow_values)					///
+	onselchangelist(firstrow_list_sel)			///
+	label("First row")
+  SPINNER  sp_firstrow	175	@	60	.,		///
+  	default(1) min(1)
+  TEXT     tx_varcase	_lft2	holdy	_cwd2	.,		///
+  	label("Variable case:")
+  COMBOBOX cb_varcase	@ 	_ss	cbwd	.,		///
+ 	dropdownlist						///
+ 	contents(varcase_list)					///
+	values(varcase_values)					///
+	default("lower")					///
+	option(case)						///
+	label("Variable case") 
+  TEXT     tx_bindq	_lft	_ls	_cwd2	.,		///
+  	label("Quote binding:")
+  DEFINE holdy @y
+  COMBOBOX cb_bindq	@ 	_ss	cbwd	.,		///
+ 	dropdownlist						///
+ 	contents(bindq_list)					///
+	values(bindq_values)					///
+	default("loose")					///
+	option(bindquotes)					///
+	label("Quote binding")
+  TEXT     tx_stripq	_lft2	holdy	_cwd2	.,		///
+  	label("Quote stripping:")
+  COMBOBOX cb_stripq	@ 	_ss	cbwd	.,		///
+ 	dropdownlist						///
+ 	contents(stripq_list)					///
+	values(stripq_values)					///
+	default("default")					///
+	option(stripquotes)					///
+	label("Quote stripping")
+  TEXT     tx_dtatype	_lft	_ls	_cwd2	.,		///
+  	label("Floating point precision:")
+  COMBOBOX cb_dtatype	@ 	_ss	cbwd	.,		///
+ 	dropdownlist						///
+ 	contents(dtatype_list)					///
+	values(dtatype_values)					///
+	label("Floating point precision")
+  BUTTON   bu_range	_lft2	@	cbwd	.,		///
+  	onpush(script main_range_show)				///
+  	label("Set range...")
+  CHECKBOX cb_numcols	_lft	_xls	230	_ht3,		///
+  	groupbox						///
+  	onclickon(script main_numcols_on)			///
+  	onclickoff(script main_numcols_off)			///	
+  	label("Force specified columns to be numeric")
+  DEFINE holdy @y
+  EDIT	   ed_numcols	_indent	_ms	100	.,		///
+  	option(numericcols)					///
+  	label("Column numlist")
+  TEXT     tx_numcols	130	@	100	.,		///
+  	label("Column numlist")
+  CHECKBOX cb_strcols	_lft2	holdy	230	_ht3,		///
+  	groupbox						///
+  	onclickon(script main_strcols_on)			///
+  	onclickoff(script main_strcols_off)			///
+  	label("Force specified columns to be string")
+  EDIT	   ed_strcols	_indent	_ms	100	.,		///
+  	option(stringcols)					///
+  	label("Column numlist")
+  TEXT     tx_strcols	380	@	100	.,		///
+  	label("Column numlist")
+  CHECKBOX ck_clear	_lft	380	_cwd1	.,		///
+	option(clear) nomem label("Replace data in memory")
+END
+
+LIST delimiter_list
+BEGIN
+	"Automatic"
+	"Comma"
+	"Tab"
+	"Space"
+	"Whitespace"
+	"Custom"
+END
+
+LIST delimiter_values
+BEGIN
+	""
+	"comma"
+	"tab"
+	"space"
+	"whitespace"
+	"custom"
+END
+
+LIST delimiter_list_sel
+BEGIN
+	script main_delimit_off
+	script main_delimit_off
+	script main_delimit_off
+	script main_delimit_off
+	script main_delimit_off
+	script main_delimit_on
+END
+
+SCRIPT main_delimit_on
+BEGIN
+	main.ed_delimit.enable
+	main.tx_delimit.enable
+	main.ck_asstring.show
+END
+
+SCRIPT main_delimit_off
+BEGIN
+	main.ed_delimit.disable
+	main.tx_delimit.disable
+	main.ck_asstring.hide
+END
+
+LIST firstrow_list
+BEGIN
+	"Automatic"
+	"Always"
+	"Never"
+	"Custom"
+END
+
+LIST firstrow_values
+BEGIN
+	""
+	"always"
+	"never"
+	"custom"
+END
+
+LIST firstrow_list_sel
+BEGIN
+	script main_firstrow_hide
+	script main_firstrow_hide
+	script main_firstrow_hide
+	script main_firstrow_show
+END
+
+SCRIPT main_firstrow_show
+BEGIN
+	main.sp_firstrow.show
+END
+
+SCRIPT main_firstrow_hide
+BEGIN
+	main.sp_firstrow.hide
+END
+
+LIST varcase_list
+BEGIN
+	"Lower"
+	"Upper"
+	"Preserve"
+END
+
+LIST varcase_values
+BEGIN
+	lower
+	upper
+	preserve
+END
+
+LIST bindq_list
+BEGIN
+	"Loose"
+	"Strict"
+	"Nobind"
+END
+
+LIST bindq_values	
+BEGIN
+	"loose"
+	"strict"
+	"nobind"
+END
+
+LIST stripq_list
+BEGIN
+	"Automatic"
+	"Always"
+	"Never"
+END
+
+LIST stripq_values
+BEGIN
+	"default"
+	"yes"
+	"no"
+END
+
+LIST dtatype_list
+BEGIN
+	"Use default"
+	"Import decimals as float"
+	"Import decimals as double"
+END
+
+LIST dtatype_values
+BEGIN
+	""
+	"asfloat"
+	"asdouble"
+END
+
+SCRIPT main_numcols_on 
+BEGIN
+	main.ed_numcols.enable
+	main.tx_numcols.enable
+END
+
+SCRIPT main_numcols_off 
+BEGIN
+	main.ed_numcols.disable
+	main.tx_numcols.disable
+END
+
+SCRIPT main_strcols_on 
+BEGIN
+	main.ed_strcols.enable
+	main.tx_strcols.enable
+END
+
+SCRIPT main_strcols_off
+BEGIN
+	main.ed_strcols.disable
+	main.tx_strcols.disable
+END
+
+SCRIPT main_range_show
+BEGIN
+	create CHILD import_delimited_range AS im_range
+	im_range.setExitString rangeResult
+	im_range.setOkAction "program check_range_result"
+END
+
+PROGRAM check_range_result
+BEGIN
+	if rangeResult {
+		call main.bu_range.setlabel 	///
+			"Set range... *"
+	}
+	else {
+		call main.bu_range.setlabel 	///
+			"Set range...  "
+	}
+END
+
+PROGRAM main_delimiter_output
+BEGIN
+	if (main.cb_del | main.ck_collapse) {
+		put "delimiters("
+		put /program main_delimiter_output_wrk
+		put ") "
+	}
+END
+
+PROGRAM main_delimiter_output_wrk
+BEGIN
+	if main.cb_del.iseq("custom") {
+		put `"""' main.ed_delimit `"""'
+	}
+	else {
+		put main.cb_del
+	}
+	beginoptions
+		option main.ck_collapse
+		option main.ck_asstring
+	endoptions
+END
+
+PROGRAM	main_firstrow_output
+BEGIN	
+	if main.cb_firstrow.iseq("always") {
+		put "varname(1)"
+	}
+	if main.cb_firstrow.iseq("never") {
+		put "varname(nonames)"
+	}
+	if main.cb_firstrow.iseq("custom") {
+		put "varname("
+		put main.sp_firstrow
+		put ")"
+	}
+END
+
+PROGRAM main_dtatype_output
+BEGIN
+	if main.cb_dtatype.iseq("asfloat") {
+		put "asfloat"
+	}
+	if main.cb_dtatype.iseq("asdouble") {
+		put "asdouble"
+	}
+END
+
+PROGRAM command
+BEGIN
+	put "import delimited "
+	require main.fi_using
+	put "using "
+	put `"""' main.fi_using `"""'
+	beginoptions
+		put /program " " main_delimiter_output
+		put " " rangeResult
+		put /program " " main_firstrow_output
+		optionarg /hidedefault main.cb_varcase
+		optionarg /hidedefault main.cb_bindq
+		optionarg /hidedefault main.cb_stripq
+		put /program " " main_dtatype_output
+		if main.cb_numcols {
+			require main.ed_numcols
+			optionarg main.ed_numcols
+		}
+		if main.cb_strcols {
+			require main.ed_strcols
+			optionarg main.ed_strcols
+		}
+		option main.ck_clear
+	endoptions
+END

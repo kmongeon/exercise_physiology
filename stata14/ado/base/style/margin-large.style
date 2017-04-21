@@ -1,0 +1,10 @@
+*! version 1.0.1  23feb2016
+sequence 1700
+
+* label "Large"
+label resource "MARGIN-LARGE"
+
+set left   8
+set right  8
+set top    8
+set bottom 8

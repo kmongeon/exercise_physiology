@@ -1,0 +1,7 @@
+*! version 1.0.1  22feb2016
+sequence 1000
+
+* label "Zero"
+label resource "GSIZE-ZERO"
+
+set val 0

@@ -1,0 +1,10 @@
+*! version 1.0.1  23feb2016
+sequence 9100
+
+* label "Esubhead"
+label resource "MARGIN-ESUBHEAD"
+
+set left   2.2
+set right  2.2
+set top      0
+set bottom 4.0

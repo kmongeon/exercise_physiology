@@ -1,0 +1,7 @@
+*! version 1.0.1  22feb2016
+sequence 3000
+
+* label "Automatic"
+label resource "GSIZE-DEFAULT"
+
+set val 4.166

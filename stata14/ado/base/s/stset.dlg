@@ -1,0 +1,39 @@
+/*
+   stset.dlg
+
+*!  VERSION 1.2.1  12feb2015
+
+*/
+
+VERSION 14.0
+
+INCLUDE _std_large
+INCLUDE _ht320
+INCLUDE header
+
+HELP hlp1, view("help stset")
+RESET res1
+
+SCRIPT PREINIT
+BEGIN
+	create STRING parent_name
+	create BOOLEAN isMI
+	isMI.setfalse
+	setscale_hadj resource STSET_DLG_HSCALE
+	
+	parent_name.setvalue class PARENT._dlg_rsrcname
+END
+
+PROGRAM POSTINIT_PROGRAM
+BEGIN
+	if parent_name.contains("stteffects") {
+		call program stset_check_single
+	}
+END
+
+DIALOG main, label(resource STSET_DLG_TITLE) /*
+		*/ tabtitle(resource LBL_TAB_MAIN)
+BEGIN
+
+INCLUDE stset
+

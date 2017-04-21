@@ -1,0 +1,10 @@
+*! version 1.0.1  23feb2016
+sequence 3200
+
+* label "Top_bottom"
+label resource "MARGIN-TOP_BOTTOM"
+
+set left     0
+set right    0
+set top    3.5
+set bottom 3.5
