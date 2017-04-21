@@ -1,9 +1,0 @@
-*! version 1.0.2  22feb2016
-sequence 5300
-
-* label "Third"
-label resource "GSIZE-THIRD"
-
-set val 33.333333333333
-
-* ?? make +1.5555555555555X-002 later

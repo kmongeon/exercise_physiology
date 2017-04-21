@@ -1,9 +1,0 @@
-*! version 1.0.2  22feb2016
-sequence 2530
-
-* label "Quarter tiny"
-label resource "GSIZE-QUARTER_TINY"
-
-set val .34722
-
-* 1 pt based on a 4 inch high graph

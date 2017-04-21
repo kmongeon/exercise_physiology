@@ -1,9 +1,0 @@
-*! version 1.0.1  23feb2016
-sequence 1180
-
-* label "Huge"
-label resource "SYMBOLSIZE-HUGE"
-
-set val 4.8611
-
-* 14 pt based on a 4 inch high graph

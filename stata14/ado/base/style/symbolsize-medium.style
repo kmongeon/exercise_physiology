@@ -1,9 +1,0 @@
-*! version 1.0.1  23feb2016
-sequence 1140
-
-* label "Medium"
-label resource "SYMBOLSIZE-MEDIUM"
-
-set val 1.52778
-
-* 4.4 pt based on 4 inch graph

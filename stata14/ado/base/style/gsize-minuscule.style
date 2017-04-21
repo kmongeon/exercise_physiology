@@ -1,9 +1,0 @@
-*! version 1.0.1  22feb2016
-sequence 2100
-
-* label "Minuscule"
-label resource "GSIZE-MINUSCULE"
-
-set val .3472
-
-* 1 pt based on a 1 inch high graph

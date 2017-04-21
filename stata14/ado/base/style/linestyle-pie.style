@@ -1,6 +1,0 @@
-*! version 1.0.1  05dec2003
-sequence 2211
-
-set width    scheme pie
-set color    scheme pieline
-set pattern  scheme pie

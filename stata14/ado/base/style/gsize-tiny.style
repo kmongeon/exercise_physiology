@@ -1,9 +1,0 @@
-*! version 1.0.1  22feb2016
-sequence 2110
-
-* label "Tiny"
-label resource "GSIZE-TINY"
-
-set val 1.3888
-
-* 4 pt based on a 4 inch high graph
