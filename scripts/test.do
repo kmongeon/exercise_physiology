@@ -1,4 +1,6 @@
 
+clear all
+cd "/home/kmongeon/research/exercise_physiology/scripts"
 import delimited ./data/IzzyLongitudinalWorkingMarch2015.csv,  case(lower) clear 
 order id session sequence
 sort id sequence
@@ -75,3 +77,12 @@ order $U $D $Y $X $Z
 
 xtset id seq
 count 
+
+capture drop griph 
+reg grip rsos 
+predict griph 
+replace griph = grip if (!missing(grip) & nota!=1)
+
+reg ptiso matu
+predict phat
+replace phat = ptiso if !missing(ptiso)
