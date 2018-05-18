@@ -1,0 +1,41 @@
+%%stata 
+di "stata test"
+
+/*
+net install github, from("https://haghish.github.io/github/")
+github install haghish/markdoc
+github check haghish/markdoc
+ssc install markdoc
+ssc install weaver
+ssc install statax
+ssc install synlight
+
+
+markdoc filename [, pandoc(str) printer(str) install test replace
+             export(name) markup(name) numbered style(name) template(str) toc
+             title(str) author(str) affiliation(str) address(str)
+             summary(str) date master statax noisily ]
+
+
+*/
+
+
+*loneway rsos id
+*xtreg rsos, i(id)
+*xttest0 //* Null: OLS is consistent
+
+
+%%stata --data dm
+
+qui log close _all
+qui log using t1, replace
+
+xtsum rsos 
+return list
+
+tbl ("Variable", "Observations", "Mean", "SD" \
+     "_Price_", r(N), %9.2f r(mean), %9.2f r(sd))
+
+qui log close
+
+markdoc t1, replace exp(html) 

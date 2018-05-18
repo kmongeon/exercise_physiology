@@ -1,0 +1,13 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. 
+. sum rsos tsos
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}rsos {c |}{res}        406    3816.084    100.0084       3554       4140
+{txt}{space 8}tsos {c |}{res}        406    3687.411    109.4166       3367       4015
+{txt}
+{com}. qui log close
+{smcl}
+{com}{sf}{ul off}

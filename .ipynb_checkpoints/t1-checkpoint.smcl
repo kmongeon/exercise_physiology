@@ -1,0 +1,18 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. 
+. /***/ quietly sum rsos tsos
+{txt}
+{com}. tbl ("Variable", "Observations", "Mean", "SD" \ "_Price_", r(N),     ///
+> %9.2f r(mean), 9.2f r(sd))
+
+{txt}> 
+> Variable|Observations|Mean|SD     
+> :--------|:--------:|:--------:|:--------:   
+> _Price_|406|3687.41|9.2f r(sd)   
+> 
+
+{com}. 
+. qui log close
+{smcl}
+{com}{sf}{ul off}
