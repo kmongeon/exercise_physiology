@@ -1,0 +1,211 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. 
+. //OFF
+. rename biodex biod
+{res}{txt}
+{com}. gen lng = ln(grip)
+{txt}(43 missing values generated)
+
+{com}. gen lnb = ln(biod)
+{txt}
+{com}. gen lnr = ln(rsos)
+{txt}
+{com}. gen lnt = ln(tsos)
+{txt}
+{com}. 
+. rename st_rsos r
+{res}{txt}
+{com}. rename st_tsos t
+{res}{txt}
+{com}. rename st_grip g
+{res}{txt}
+{com}. rename st_biod b
+{res}{txt}
+{com}. rename st_matu m
+{res}{txt}
+{com}. rename st_ntxc n
+{res}{txt}
+{com}. rename st_calo c
+{res}{txt}
+{com}. rename st_mvh v
+{res}{txt}
+{com}. 
+. gen rb = boys * r
+{txt}
+{com}. gen rg = girls * r
+{txt}
+{com}. 
+. set cformat %9.4f
+{txt}
+{com}. 
+. #delimit ;
+{txt}delimiter now ;
+{com}. eststo m1: gsem
+>     (r <- g@k1   _cons@kk)
+>     (t <- b@k1 v _cons@kk)
+>     (r <- m@k2 n@k3  M1[id]@1 _cons@cc) 
+>     (g b <- m@k4 c@k5 M2[id]@1), 
+>     covstruct(_lexogenous, diagonal)   
+>     nocapslatent latent(M1 M2) 
+>     cov(e.r*e.t) cov(e.g*e.b) cov(M1[id]*M2[id])
+>     nohead nolog 
+>     ;
+{res}{p 0 7}{space 1}{text:( 1)}{space 1} [r]g - [t]b = 0{p_end}
+{p 0 7}{space 1}{text:( 2)}{space 1} [r]M1[id] = 1{p_end}
+{p 0 7}{space 1}{text:( 3)}{space 1} [g]m - [b]m = 0{p_end}
+{p 0 7}{space 1}{text:( 4)}{space 1} [g]c - [b]c = 0{p_end}
+{p 0 7}{space 1}{text:( 5)}{space 1} [g]M2[id] = 1{p_end}
+{p 0 7}{space 1}{text:( 6)}{space 1} [b]M2[id] = 1{p_end}
+{txt}{hline 18}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 19}{c |}      Coef.{col 31}   Std. Err.{col 43}      z{col 51}   P>|z|{col 59}     [95% Con{col 72}f. Interval]
+{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}r <-             {col 19}{c |}
+{space 16}g {c |}{col 19}{res}{space 2}   0.3333{col 31}{space 2}   0.0490{col 42}{space 1}    6.80{col 51}{space 3}0.000{col 59}{space 4}   0.2373{col 72}{space 3}   0.4293
+{txt}{space 16}m {c |}{col 19}{res}{space 2}   0.0913{col 31}{space 2}   0.0534{col 42}{space 1}    1.71{col 51}{space 3}0.087{col 59}{space 4}  -0.0133{col 72}{space 3}   0.1960
+{txt}{space 16}n {c |}{col 19}{res}{space 2}  -0.1911{col 31}{space 2}   0.0444{col 42}{space 1}   -4.30{col 51}{space 3}0.000{col 59}{space 4}  -0.2781{col 72}{space 3}  -0.1041
+{txt}{space 17} {c |}
+{space 11}M1[id] {c |}{col 19}{res}{space 2}   1.0000{col 31}{txt}  (constrained)
+{space 17} {c |}
+{space 12}_cons {c |}{col 19}{res}{space 2}  -0.0136{col 31}{space 2}   0.0612{col 42}{space 1}   -0.22{col 51}{space 3}0.825{col 59}{space 4}  -0.1334{col 72}{space 3}   0.1063
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}t <-             {col 19}{c |}
+{space 16}b {c |}{col 19}{res}{space 2}   0.3333{col 31}{space 2}   0.0490{col 42}{space 1}    6.80{col 51}{space 3}0.000{col 59}{space 4}   0.2373{col 72}{space 3}   0.4293
+{txt}{space 16}v {c |}{col 19}{res}{space 2}  -0.1075{col 31}{space 2}   0.0520{col 42}{space 1}   -2.07{col 51}{space 3}0.039{col 59}{space 4}  -0.2094{col 72}{space 3}  -0.0056
+{txt}{space 12}_cons {c |}{col 19}{res}{space 2}  -0.0825{col 31}{space 2}   0.0517{col 42}{space 1}   -1.60{col 51}{space 3}0.111{col 59}{space 4}  -0.1838{col 72}{space 3}   0.0189
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}g <-             {col 19}{c |}
+{space 16}m {c |}{col 19}{res}{space 2}   0.6284{col 31}{space 2}   0.0324{col 42}{space 1}   19.39{col 51}{space 3}0.000{col 59}{space 4}   0.5649{col 72}{space 3}   0.6919
+{txt}{space 16}c {c |}{col 19}{res}{space 2}   0.0815{col 31}{space 2}   0.0270{col 42}{space 1}    3.02{col 51}{space 3}0.003{col 59}{space 4}   0.0285{col 72}{space 3}   0.1344
+{txt}{space 17} {c |}
+{space 11}M2[id] {c |}{col 19}{res}{space 2}   1.0000{col 31}{txt}  (constrained)
+{space 17} {c |}
+{space 12}_cons {c |}{col 19}{res}{space 2}  -0.0062{col 31}{space 2}   0.0540{col 42}{space 1}   -0.12{col 51}{space 3}0.908{col 59}{space 4}  -0.1121{col 72}{space 3}   0.0996
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}b <-             {col 19}{c |}
+{space 16}m {c |}{col 19}{res}{space 2}   0.6284{col 31}{space 2}   0.0324{col 42}{space 1}   19.39{col 51}{space 3}0.000{col 59}{space 4}   0.5649{col 72}{space 3}   0.6919
+{txt}{space 16}c {c |}{col 19}{res}{space 2}   0.0815{col 31}{space 2}   0.0270{col 42}{space 1}    3.02{col 51}{space 3}0.003{col 59}{space 4}   0.0285{col 72}{space 3}   0.1344
+{txt}{space 17} {c |}
+{space 11}M2[id] {c |}{col 19}{res}{space 2}   1.0000{col 31}{txt}  (constrained)
+{space 17} {c |}
+{space 12}_cons {c |}{col 19}{res}{space 2}   0.0304{col 31}{space 2}   0.0503{col 42}{space 1}    0.60{col 51}{space 3}0.545{col 59}{space 4}  -0.0681{col 72}{space 3}   0.1289
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+       var(M1[id]){c |}{col 19}{res}{space 2}   0.4438{col 31}{space 2}   0.0693{col 59}{space 4}   0.3268{col 72}{space 3}   0.6028
+{txt}       var(M2[id]){c |}{col 19}{res}{space 2}   0.3586{col 31}{space 2}   0.0470{col 59}{space 4}   0.2774{col 72}{space 3}   0.4636
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+cov(M2[id],M1[id]){c |}{col 19}{res}{space 2}  -0.0725{col 31}{space 2}   0.0442{col 42}{space 1}   -1.64{col 51}{space 3}0.101{col 59}{space 4}  -0.1592{col 72}{space 3}   0.0143
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+          var(e.r){c |}{col 19}{res}{space 2}   0.3175{col 31}{space 2}   0.0403{col 59}{space 4}   0.2475{col 72}{space 3}   0.4073
+{txt}          var(e.t){c |}{col 19}{res}{space 2}   0.8050{col 31}{space 2}   0.0663{col 59}{space 4}   0.6850{col 72}{space 3}   0.9461
+{txt}          var(e.g){c |}{col 19}{res}{space 2}   0.2834{col 31}{space 2}   0.0283{col 59}{space 4}   0.2330{col 72}{space 3}   0.3447
+{txt}          var(e.b){c |}{col 19}{res}{space 2}   0.1591{col 31}{space 2}   0.0169{col 59}{space 4}   0.1293{col 72}{space 3}   0.1959
+{txt}{hline 18}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+      cov(e.t,e.r){c |}{col 19}{res}{space 2}   0.2557{col 31}{space 2}   0.0552{col 42}{space 1}    4.63{col 51}{space 3}0.000{col 59}{space 4}   0.1475{col 72}{space 3}   0.3638
+{txt}      cov(e.b,e.g){c |}{col 19}{res}{space 2}   0.0379{col 31}{space 2}   0.0139{col 42}{space 1}    2.72{col 51}{space 3}0.006{col 59}{space 4}   0.0106{col 72}{space 3}   0.0651
+{txt}{hline 18}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}.     #delimit cr
+{txt}delimiter now cr
+{com}. //ON
+. esttab m1 
+{res}
+{txt}{hline 28}
+{txt}                      (1)   
+{txt}                        r   
+{txt}{hline 28}
+{res}r                           {txt}
+{txt}g           {res}        0.333***{txt}
+            {res} {ralign 12:{txt:(}6.80{txt:)}}   {txt}
+
+{txt}m           {res}       0.0913   {txt}
+            {res} {ralign 12:{txt:(}1.71{txt:)}}   {txt}
+
+{txt}n           {res}       -0.191***{txt}
+            {res} {ralign 12:{txt:(}-4.30{txt:)}}   {txt}
+
+{txt}M1[id]      {res}            1   {txt}
+            {res} {ralign 12:{txt:(}.{txt:)}}   {txt}
+
+{txt}_cons       {res}      -0.0136   {txt}
+            {res} {ralign 12:{txt:(}-0.22{txt:)}}   {txt}
+{hline 28}
+{res}t                           {txt}
+{txt}b           {res}        0.333***{txt}
+            {res} {ralign 12:{txt:(}6.80{txt:)}}   {txt}
+
+{txt}v           {res}       -0.107*  {txt}
+            {res} {ralign 12:{txt:(}-2.07{txt:)}}   {txt}
+
+{txt}_cons       {res}      -0.0825   {txt}
+            {res} {ralign 12:{txt:(}-1.60{txt:)}}   {txt}
+{hline 28}
+{res}g                           {txt}
+{txt}m           {res}        0.628***{txt}
+            {res} {ralign 12:{txt:(}19.39{txt:)}}   {txt}
+
+{txt}c           {res}       0.0815** {txt}
+            {res} {ralign 12:{txt:(}3.02{txt:)}}   {txt}
+
+{txt}M2[id]      {res}            1   {txt}
+            {res} {ralign 12:{txt:(}.{txt:)}}   {txt}
+
+{txt}_cons       {res}     -0.00623   {txt}
+            {res} {ralign 12:{txt:(}-0.12{txt:)}}   {txt}
+{hline 28}
+{res}b                           {txt}
+{txt}m           {res}        0.628***{txt}
+            {res} {ralign 12:{txt:(}19.39{txt:)}}   {txt}
+
+{txt}c           {res}       0.0815** {txt}
+            {res} {ralign 12:{txt:(}3.02{txt:)}}   {txt}
+
+{txt}M2[id]      {res}            1   {txt}
+            {res} {ralign 12:{txt:(}.{txt:)}}   {txt}
+
+{txt}_cons       {res}       0.0304   {txt}
+            {res} {ralign 12:{txt:(}0.60{txt:)}}   {txt}
+{hline 28}
+{res}var(M1[id])                 {txt}
+{txt}_cons       {res}        0.444***{txt}
+            {res} {ralign 12:{txt:(}6.40{txt:)}}   {txt}
+{hline 28}
+{res}var(M2[id])                 {txt}
+{txt}_cons       {res}        0.359***{txt}
+            {res} {ralign 12:{txt:(}7.63{txt:)}}   {txt}
+{hline 28}
+{res}cov(M2[id]~)                {txt}
+{txt}_cons       {res}      -0.0725   {txt}
+            {res} {ralign 12:{txt:(}-1.64{txt:)}}   {txt}
+{hline 28}
+{res}var(e.r)                    {txt}
+{txt}_cons       {res}        0.318***{txt}
+            {res} {ralign 12:{txt:(}7.87{txt:)}}   {txt}
+{hline 28}
+{res}var(e.t)                    {txt}
+{txt}_cons       {res}        0.805***{txt}
+            {res} {ralign 12:{txt:(}12.14{txt:)}}   {txt}
+{hline 28}
+{res}var(e.g)                    {txt}
+{txt}_cons       {res}        0.283***{txt}
+            {res} {ralign 12:{txt:(}10.01{txt:)}}   {txt}
+{hline 28}
+{res}var(e.b)                    {txt}
+{txt}_cons       {res}        0.159***{txt}
+            {res} {ralign 12:{txt:(}9.43{txt:)}}   {txt}
+{hline 28}
+{res}cov(e.t,e.r)                {txt}
+{txt}_cons       {res}        0.256***{txt}
+            {res} {ralign 12:{txt:(}4.63{txt:)}}   {txt}
+{hline 28}
+{res}cov(e.b,e.g)                {txt}
+{txt}_cons       {res}       0.0379** {txt}
+            {res} {ralign 12:{txt:(}2.72{txt:)}}   {txt}
+{txt}{hline 28}
+{txt}N           {res}          404   {txt}
+{txt}{hline 28}
+{txt}t statistics in parentheses
+{txt}* p<0.05, ** p<0.01, *** p<0.001
+
+{com}. qui log close
+{smcl}
+{com}{sf}{ul off}

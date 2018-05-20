@@ -1,3 +1,35 @@
+/* 
+eststo m1: gsem
+    (r <- g m n   M1[id]@1) (g <- m c M2[id]@1) 
+    (t <- b m n v M1[id]@1) (b <- m c M2[id]@1) , 
+    covstruct(_lexogenous, diagonal)   
+    nocapslatent latent(M1 M2) 
+    cov(e.r*e.t) cov(e.g*e.b)  cov(M1[id]*M2[id])
+    nohead nolog 
+    ;
+    
+/*  
+eststo m1: gsem
+    (r <- g@k1 m@k2 n@k3   M1[id]@1) (g <- m@k4 c@k5) 
+    (t <- b@k1 m@k2 n@k3 v M1[id]@1) (b <- m@k4 c@k5) , 
+    covstruct(_lexogenous, diagonal)   
+    nocapslatent latent(M1 M2) 
+    cov(e.r*e.t) cov(e.g*e.b)
+    nohead nolog 
+    ;
+    
+eststo m2: gsem
+    (r <- g@k1 m@k2 n@k3   M1[id]@1) (g <- m@k4 c@k5 M2[id]@1) 
+    (t <- b@k1 m@k2 n@k3 v M1[id]@1) (b <- m@k4 c@k5 M2[id]@1) , 
+    covstruct(_lexogenous, diagonal)   
+    nocapslatent latent(M1 M2) 
+    cov(e.r*e.t) cov(e.g*e.b) cov(M1*M2)
+    nohead nolog 
+    ;
+    
+estout ;
+*/
+
 %%stata 
 di "stata test"
 
@@ -39,3 +71,6 @@ tbl ("Variable", "Observations", "Mean", "SD" \
 qui log close
 
 markdoc t1, replace exp(html) 
+
+
+estout cells(b(fmt(a3)) t(fmt(2) par)) stats(r2 N, fmt(3 0))
