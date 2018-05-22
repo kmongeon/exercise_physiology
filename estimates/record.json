@@ -1,0 +1,150 @@
+{
+  "metaob" : {
+    "stataobs" : {
+      "sobs" : 1,
+      "eobs" : 25,
+      "nobs" : 25,
+      "observationIndex" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ],
+      "iterator" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
+    },
+    "statavars" : {
+      "nvars" : 9,
+      "valueLabelNames" : { },
+      "valueLabels" : { },
+      "displayFmt" : {
+        "name" : "String Variable Indicator",
+        "values" : {
+          "tstat" : "%9.0g",
+          "coef" : "%9.0g",
+          "pval" : "%9.0g",
+          "var" : "%24s",
+          "stderr" : "%9.0g",
+          "ci_lower" : "%9.0g",
+          "ci_upper" : "%9.0g",
+          "M" : "%9.0g",
+          "N" : "%9.0g"
+        },
+        "iterator" : [ "tstat", "coef", "pval", "var", "stderr", "ci_lower", "ci_upper", "M", "N" ]
+      },
+      "variableLabels" : {
+        "tstat" : "t-statistic",
+        "coef" : "Coefficient",
+        "pval" : "Two-tailed p-value",
+        "var" : "Variable",
+        "stderr" : "Standard error",
+        "ci_lower" : "95% confidence interval (lower bound)",
+        "ci_upper" : "95% confidence interval (upper bound)",
+        "M" : "",
+        "N" : "Number of observations"
+      },
+      "variableIndex" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+      "variableNames" : [ "var", "coef", "stderr", "tstat", "pval", "ci_lower", "ci_upper", "N", "M" ],
+      "variableTypes" : {
+        "tstat" : false,
+        "coef" : false,
+        "pval" : false,
+        "var" : true,
+        "stderr" : false,
+        "ci_lower" : false,
+        "ci_upper" : false,
+        "M" : false,
+        "N" : false
+      },
+      "varIndexObject" : {
+        "name" : "variable index",
+        "values" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+        "varIndexValues" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+      },
+      "nvarsObject" : {
+        "name" : "number of variabels",
+        "values" : 9
+      },
+      "varNamesObject" : {
+        "name" : "Variable Names",
+        "values" : [ "var", "coef", "stderr", "tstat", "pval", "ci_lower", "ci_upper", "N", "M" ],
+        "iterator" : [ "var", "coef", "stderr", "tstat", "pval", "ci_lower", "ci_upper", "N", "M" ]
+      },
+      "varLabelsObject" : {
+        "name" : "Variable Labels",
+        "values" : {
+          "tstat" : "t-statistic",
+          "coef" : "Coefficient",
+          "pval" : "Two-tailed p-value",
+          "var" : "Variable",
+          "stderr" : "Standard error",
+          "ci_lower" : "95% confidence interval (lower bound)",
+          "ci_upper" : "95% confidence interval (upper bound)",
+          "M" : "",
+          "N" : "Number of observations"
+        },
+        "iterator" : [ "tstat", "coef", "pval", "var", "stderr", "ci_lower", "ci_upper", "M", "N" ]
+      },
+      "valLabNamesObject" : {
+        "name" : "Variable Label Names",
+        "values" : { },
+        "iterator" : [ ]
+      },
+      "valLabelsObject" : {
+        "name" : "Value Labels",
+        "values" : { },
+        "iterator" : [ ]
+      },
+      "varTypesObject" : {
+        "name" : "String Variable Indicator",
+        "values" : {
+          "tstat" : false,
+          "coef" : false,
+          "pval" : false,
+          "var" : true,
+          "stderr" : false,
+          "ci_lower" : false,
+          "ci_upper" : false,
+          "M" : false,
+          "N" : false
+        },
+        "iterator" : [ "tstat", "coef", "pval", "var", "stderr", "ci_lower", "ci_upper", "M", "N" ]
+      }
+    },
+    "varindex" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ],
+    "obsindex" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ],
+    "obs14" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ],
+    "obs13" : [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ],
+    "varNames" : [ "var", "coef", "stderr", "tstat", "pval", "ci_lower", "ci_upper", "N", "M" ],
+    "areStrings" : {
+      "tstat" : false,
+      "coef" : false,
+      "pval" : false,
+      "var" : true,
+      "stderr" : false,
+      "ci_lower" : false,
+      "ci_upper" : false,
+      "M" : false,
+      "N" : false
+    },
+    "valueLabelNames" : { },
+    "variableLabels" : {
+      "tstat" : "t-statistic",
+      "coef" : "Coefficient",
+      "pval" : "Two-tailed p-value",
+      "var" : "Variable",
+      "stderr" : "Standard error",
+      "ci_lower" : "95% confidence interval (lower bound)",
+      "ci_upper" : "95% confidence interval (upper bound)",
+      "M" : "",
+      "N" : "Number of observations"
+    }
+  },
+  "obid" : 0,
+  "name" : "DataRecord",
+  "data" : {
+    "tstat" : 0.0,
+    "coef" : 0.0,
+    "pval" : 0.0,
+    "var" : null,
+    "stderr" : 0.0,
+    "ci_lower" : 0.0,
+    "ci_upper" : 0.0,
+    "M" : 0.0,
+    "N" : 0.0
+  }
+}
