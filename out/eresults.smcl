@@ -1,0 +1,134 @@
+{smcl}
+{com}{sf}{ul off}{txt}
+{com}. //OFF
+. 
+. global R "r <- g@k1 m@k2 n@k3 M1[id]@1 _cons@kk"
+{txt}
+{com}. global T "t <- b@k1 m@k2 n@k3 M1[id]@1 _cons@kk"
+{txt}
+{com}. global M "g b <- m@k4 c@k5 M2[id]@1 _cons@km"
+{txt}
+{com}. global C "covstruct(_lexogenous, diagonal) nocapslatent latent(M1 M2) cov(e.r*e.t) cov(e.g*e.b) cov(M1[id]*M2[id]) "
+{txt}
+{com}. global O "nohead nolog"
+{txt}
+{com}. 
+. global RS "tstat pval ci level(95)"
+{txt}
+{com}. 
+. quietly gsem ($R) ($T) ($M), $C $O
+{txt}
+{com}. estimates store ALL
+{txt}
+{com}. *regsave using table2, replace addlabel(M, all) tstat pval ci level(95)
+. 
+. quietly gsem ($R) ($T) ($M) if G == "boy", $C $O
+{txt}
+{com}. estimates store BOYS
+{txt}
+{com}. *regsave using table2, append addlabel(M, boys) tstat pval ci level(95)
+. 
+. quietly gsem ($R) ($T) ($M) if G == "girl", $C $O
+{txt}
+{com}. estimates store GIRLS
+{txt}
+{com}. *regsave using table2, append addlabel(M, girls) tstat pval ci level(95)
+. 
+. label variable r "Radial SOS"
+{txt}
+{com}. label variable r "Tibial SOS"
+{txt}
+{com}. label variable g "Grip strength"
+{txt}
+{com}. label variable m "Physical maturation"
+{txt}
+{com}. label variable n "Ntx creatine"
+{txt}
+{com}. label variable b "Knee extensor"
+{txt}
+{com}. label variable c "Energy intake"
+{txt}
+{com}. 
+. label variable g "Muscle strength"
+{txt}
+{com}. label variable r "Bone properties"
+{txt}
+{com}. 
+. //ON
+. 
+. txt ///
+> The estimation results are summarized in Table 2. All level-1 fixed effects and level-2 random effects were found to be significant at the 0.01 level. ///
+> To facilitate straightforward comparison of the causal effects, all variables were transformed/standardized to a mean of zero and standard deviation of one. Conclusions based on non-standardized values support identical inferences. ///
+> 
+{res} 
+
+{txt}> The estimation results are summarized in Table 2. All level-1 fixed effects and level-2 random effects were found to be significant at the 0.01 level. To facilitate straightforward comparison of the causal effects, all variables were transformed/standardized to a mean of zero and standard deviation of one. Conclusions based on non-standardized values support identical inferences.
+
+
+{com}. txt ///
+> The results are consistent with the relationships postulated by the functional model of bone development. Physical maturity and nutrition influence muscle strength, which in-turn, along osteoclast activity, and physical maturity influences bone properties. Although physical maturation has both direct and indirect impacts bone properties, physical maturation and muscle strength had similar total impact. In terms of standard unit changes, the direct impact of muscle strength and physical maturation on bone pro
+{res} 
+
+{txt}> The results are consistent with the relationships postulated by the functional model of bone development. Physical maturity and nutrition influence muscle strength, which in-turn, along osteoclast activity, and physical maturity influences bone properties. Although physical maturation has both direct and indirect impacts bone properties, physical maturation and muscle strength had similar total impact. In terms of standard unit changes, the direct impact of muscle strength and physical maturation on bone pro
+
+
+{com}. 
+. //OFF
+. esttab ALL BOYS GIRLS, ///
+> keep(r:g r:m r:n r:_cons g:m g:c g:_cons var(M1[id]):_cons var(M2[id]):_cons cov(M2[id],M1[id]):_cons ) ///
+> label b(%9.4f) se(%9.4f)  nostar ///
+> nodepvars nonumbers parentheses noeqlines compress nonotes ///
+> mtitles("All" "Boys" "Girls") ///
+> title("Table 2. Estiamtion results") ///
+> addnotes("Notes: Standard errors in parentheses. All level-1 fixed effects and level-2 random effects were found to be significant at the 0.05 level") ///
+> coeflabels(var(M1[id]):_cons "Bone equations" var(M2[id]):_cons "Muscle equations" cov(M2[id],M1[id]):_cons "Covariance") ///
+> varwidth(20) modelwidth(15)
+{res}
+{txt}Table 2. Estiamtion results
+{txt}{hline 68}
+{txt}                                 All            Boys           Girls
+{txt}{hline 68}
+{res}Bone properties                                                     {txt}
+{txt}Muscle strength     {res}          0.2924          0.2017          0.3654{txt}
+                    {res} {ralign 15:{txt:(}0.0624{txt:)}} {ralign 15:{txt:(}0.1006{txt:)}} {ralign 15:{txt:(}0.0964{txt:)}}{txt}
+
+{txt}Physical maturation {res}          0.1806          0.1577          0.2258{txt}
+                    {res} {ralign 15:{txt:(}0.0536{txt:)}} {ralign 15:{txt:(}0.1167{txt:)}} {ralign 15:{txt:(}0.0700{txt:)}}{txt}
+
+{txt}Ntx creatine        {res}         -0.1749         -0.1726         -0.1611{txt}
+                    {res} {ralign 15:{txt:(}0.0326{txt:)}} {ralign 15:{txt:(}0.0465{txt:)}} {ralign 15:{txt:(}0.0460{txt:)}}{txt}
+
+{txt}Constant            {res}         -0.0388         -0.0926          0.0258{txt}
+                    {res} {ralign 15:{txt:(}0.0535{txt:)}} {ralign 15:{txt:(}0.0910{txt:)}} {ralign 15:{txt:(}0.0897{txt:)}}{txt}
+
+{res}Muscle strength                                                     {txt}
+{txt}Physical maturation {res}          0.6241          0.9996          0.5594{txt}
+                    {res} {ralign 15:{txt:(}0.0323{txt:)}} {ralign 15:{txt:(}0.0390{txt:)}} {ralign 15:{txt:(}0.0408{txt:)}}{txt}
+
+{txt}Energy intake       {res}          0.0843          0.0148          0.0524{txt}
+                    {res} {ralign 15:{txt:(}0.0270{txt:)}} {ralign 15:{txt:(}0.0258{txt:)}} {ralign 15:{txt:(}0.0403{txt:)}}{txt}
+
+{txt}Constant            {res}          0.0209          0.5326         -0.3887{txt}
+                    {res} {ralign 15:{txt:(}0.0495{txt:)}} {ralign 15:{txt:(}0.0563{txt:)}} {ralign 15:{txt:(}0.0487{txt:)}}{txt}
+
+{res}var(M1[id])                                                         {txt}
+{txt}Bone equations      {res}          0.3949          0.3439          0.4263{txt}
+                    {res} {ralign 15:{txt:(}0.0542{txt:)}} {ralign 15:{txt:(}0.0678{txt:)}} {ralign 15:{txt:(}0.0820{txt:)}}{txt}
+
+{res}var(M2[id])                                                         {txt}
+{txt}Muscle equations    {res}          0.3607          0.2328          0.0724{txt}
+                    {res} {ralign 15:{txt:(}0.0472{txt:)}} {ralign 15:{txt:(}0.0392{txt:)}} {ralign 15:{txt:(}0.0270{txt:)}}{txt}
+
+{res}cov(M2[id],M1[id])                                                  {txt}
+{txt}Covariance          {res}         -0.0952          0.0209         -0.0687{txt}
+                    {res} {ralign 15:{txt:(}0.0447{txt:)}} {ralign 15:{txt:(}0.0456{txt:)}} {ralign 15:{txt:(}0.0340{txt:)}}{txt}
+{txt}{hline 68}
+{txt}Observations        {res}             404             209             195{txt}
+{txt}{hline 68}
+{txt}Notes: Standard errors in parentheses. All level-1 fixed effects and level-2 random effects were found to be significant at the 0.05 level
+
+{com}. //ON
+. 
+. qui log close
+{smcl}
+{com}{sf}{ul off}
