@@ -1,0 +1,61 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript\10-results.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}25 May 2018, 15:42:08
+{txt}
+{com}. //_1q
+. quietly{c -(}
+{txt}
+{com}.     
+.     
+. //_2
+. display %3.2f _b[r:g]
+{res}0.29
+{txt}
+{com}. //_3
+. display %3.2f _b[r:m]
+{res}0.18
+{txt}
+{com}. //_4
+. display %3.2f _b[g:m]
+{res}0.62
+{txt}
+{com}. //_5
+. display %3.2f _b[r:g]*_b[g:m]
+{res}0.18
+{txt}
+{com}. //_6
+. display %3.2f _b[r:g]
+{res}0.29
+{txt}
+{com}. //_7
+. display %3.2f _b[g:m]
+{res}0.62
+{txt}
+{com}. //_8
+. display %3.2f _b[r:m] + _b[r:g]*_b[g:m]
+{res}0.36
+{txt}
+{com}. //_9
+. display %3.2f _b[r:m]
+{res}0.18
+{txt}
+{com}. //_10
+. display %3.2f _b[r:g]
+{res}0.29
+{txt}
+{com}. //_11
+. display %3.2f _b[g:m]
+{res}0.62
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript\10-results.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}25 May 2018, 15:42:08
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

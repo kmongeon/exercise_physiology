@@ -1,0 +1,56 @@
+d 'WEAVER': module to produce dynamic reports in HTML, LaTeX and PDF
+d
+d  Weaver produces dynamic reports in HTML, LaTeX, and PDF. It
+d includes a built-in  JavaScript syntax highlighter and a
+d simplified markup language which makes writing  and styling text
+d more convenient. Weaver is primarily a new log system that can 
+d be run in parallel with Stata smcl log system. However, it is not
+d autonomous and allows the users to select what should appear in
+d the HTML or LaTeX log. The log can is updated in real-time  and
+d the user can create a PDF preview of the document at any point. 
+d
+d KW: Dynamic Document
+d KW: Reproducible Research
+d KW: Pandoc
+d KW: MarkDoc
+d KW: Markdown
+d KW: smcl
+d KW: HTML
+d KW: LaTeX 
+d KW: Log
+d
+d Requires: Stata version 11 
+d
+d Distribution-Date: 20160929
+d
+d Author: E.F. Haghish, University of Freiburg
+d Support: email haghish@@imbi.uni-freiburg.de
+d
+f weave.ado
+f weave.sthlp
+f weaver.sthlp
+f codes.ado
+f div.ado
+f div.sthlp
+f html.ado
+f html.sthlp
+f img.ado
+f img.sthlp
+f report.ado
+f reportcheck.ado
+f results.ado
+f tbl.ado
+f tbl.sthlp
+f txt.ado
+f txt.sthlp
+f weavend.ado
+f weavercheck.ado
+f weavermarkup.ado
+f weavermath.ado
+f Weaver_Markup.sthlp
+f Weaver_mathematical_notation.sthlp
+f weavercontroller.ado
+f weaverstyle.ado
+f weaverversion.ado
+f weaverwkhtmltopdf.ado
+f weaverzoom.ado
