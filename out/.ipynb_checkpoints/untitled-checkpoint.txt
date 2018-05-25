@@ -1,0 +1,31 @@
+&= 
+\begin{bmatrix}
+    {\epsilon_1}_{i,t}  \\
+    {\epsilon_2}_{i,t}
+\end{bmatrix}
+, \hspace{2mm}
+\mu_{i,t} =
+\begin{bmatrix}
+    {\mu_1}_{i,t}  \\
+    {\mu_2}_{i,t}
+\end{bmatrix}
+, \hspace{2mm}
+\iota_{i,t} =
+\begin{bmatrix}
+    1  \\
+    1
+\end{bmatrix} \\
+\Sigma
+&= 
+\begin{bmatrix}
+    \sigma^2_{\epsilon_1} & \sigma_{\epsilon_1, \epsilon_2}  \\
+    \sigma_{\epsilon_2, \epsilon_1} & \sigma^2_{\epsilon_2}  \\
+\end{bmatrix} 
+, \hspace{2mm}
+\Psi
+= 
+\begin{bmatrix}
+    \sigma^2_{\mu_1} & \sigma_{\mu_1, \mu_2}  \\
+    \sigma_{\mu_2, \mu_1} & \sigma^2_{\mu_2}  \\
+\end{bmatrix} 
+\end{align}

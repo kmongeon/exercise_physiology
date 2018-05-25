@@ -6,6 +6,43 @@ A multilevel structural equation model (i.e., SEM) was developed to describe bon
 
 The functional model of bone development provides the conceptual framework to model bone property changes. This model postulates that specific modulators influence muscle strength, which in turn, along with osteoblasts/osteoclasts related cellular modulators, influence bone properties (see Figure 1). The general SEM to describe bone property changes can be expressed as
 
+\begin{align}
+\mathbf{Y_{i,t}} 
+&= 
+\begin{bmatrix}
+y1_{i,t}  \\
+y2_{i,t} 
+\end{bmatrix}
+= \beta_0 \mathbf{\iota} + \mathbf{M_{i,t}'}\beta_1 + \mathbf{Z_{i,t}'} \Theta + \gamma_i \mathbf{\iota} + \epsilon_{i,t} \\
+\mathbf{M_{i,t}} 
+&= 
+\begin{bmatrix}
+m1_{i,t}  \\
+m2_{i,t} 
+\end{bmatrix}
+= \Omega_{i,t} W_{i,t} \mathbf{\iota} \ + \delta_i \mathbf{\iota} + \mu_{i,t} 
+\end{align}
+
+$ 
+\epsilon_{i,t} = 
+\begin{bmatrix}
+{\epsilon_1}_{i,t}  \\
+{\epsilon_2}_{i,t}
+\end{bmatrix}
+,
+\mu_{i,t} =
+\begin{bmatrix}
+{\mu_1}_{i,t}  \\
+{\mu_2}_{i,t}
+\end{bmatrix}
+, 
+\iota_{i,t} =
+\begin{bmatrix}
+1  \\
+1
+\end{bmatrix}
+$
+
 $ y_{i,t} =  \beta_0 + \beta_1 m_{i,t} + \beta_2 {x_2}_{i,t} + .... + \beta_k {x_k}_{i,t} + \gamma_i + \epsilon_{i,t}$
 
 $ m_{i,t} =  \alpha_0 + \alpha_1 {z_1}_{i,t} + .... + \beta_m {z_m}_{i,t} + \mu_{i,t}$
