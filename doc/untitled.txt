@@ -1,0 +1,107 @@
+/* 
+eststo m1: gsem
+    (r <- g m n   M1[id]@1) (g <- m c M2[id]@1) 
+    (t <- b m n v M1[id]@1) (b <- m c M2[id]@1) , 
+    covstruct(_lexogenous, diagonal)   
+    nocapslatent latent(M1 M2) 
+    cov(e.r*e.t) cov(e.g*e.b)  cov(M1[id]*M2[id])
+    nohead nolog 
+    ;
+    
+/*  
+eststo m1: gsem
+    (r <- g@k1 m@k2 n@k3   M1[id]@1) (g <- m@k4 c@k5) 
+    (t <- b@k1 m@k2 n@k3 v M1[id]@1) (b <- m@k4 c@k5) , 
+    covstruct(_lexogenous, diagonal)   
+    nocapslatent latent(M1 M2) 
+    cov(e.r*e.t) cov(e.g*e.b)
+    nohead nolog 
+    ;
+    
+eststo m2: gsem
+    (r <- g@k1 m@k2 n@k3   M1[id]@1) (g <- m@k4 c@k5 M2[id]@1) 
+    (t <- b@k1 m@k2 n@k3 v M1[id]@1) (b <- m@k4 c@k5 M2[id]@1) , 
+    covstruct(_lexogenous, diagonal)   
+    nocapslatent latent(M1 M2) 
+    cov(e.r*e.t) cov(e.g*e.b) cov(M1*M2)
+    nohead nolog 
+    ;
+    
+estout ;
+*/
+
+%%stata 
+di "stata test"
+
+/*
+net install github, from("https://haghish.github.io/github/")
+github install haghish/markdoc
+github check haghish/markdoc
+ssc install markdoc
+ssc install weaver
+ssc install statax
+ssc install synlight
+
+
+markdoc filename [, pandoc(str) printer(str) install test replace
+             export(name) markup(name) numbered style(name) template(str) toc
+             title(str) author(str) affiliation(str) address(str)
+             summary(str) date master statax noisily ]
+
+
+*/
+
+
+*loneway rsos id
+*xtreg rsos, i(id)
+*xttest0 //* Null: OLS is consistent
+
+
+%%stata --data dm
+
+qui log close _all
+qui log using t1, replace
+
+xtsum rsos 
+return list
+
+tbl ("Variable", "Observations", "Mean", "SD" \
+     "_Price_", r(N), %9.2f r(mean), %9.2f r(sd))
+
+qui log close
+
+markdoc t1, replace exp(html) 
+
+
+estout cells(b(fmt(a3)) t(fmt(2) par)) stats(r2 N, fmt(3 0))
+
+
+gen Br = B*r
+gen Bt = B*t
+gen Bg = B*g
+gen Bb = B*b
+
+gen Fr = F*r
+gen Ft = F*t
+gen Fg = F*g
+gen Fb = F*b
+
+gsem ///
+///
+(Br <- Bg@Bk1 m@Bk2 n@Bk3 B1[id]@1 _cons@Bkk) ///
+(Bt <- Bb@Bk1 m@Bk2 n@Bk3 B1[id]@1 _cons@Bkk) ///
+(Bg Bb <- m@Bk4 n@Bk5 B2[id]@1 _cons@Bkm) ///
+///
+(Fr <- Fg@Fk1 m@Fk2 n@Fk3 F1[id]@1 _cons@Fkk) ///
+(Ft <- Fb@Fk1 m@Fk2 n@Fk3 F1[id]@1 _cons@Fkk) ///
+(Fg Fb <- m@Fk4 n@Fk4 F2[id]@1 _cons@Fkm) ///
+, covstruct(_lexogenous, diagonal) nocapslatent  latent(B1 B2 F1 F2)  ///
+cov(e.Br*e.Bt) cov(e.Fr*e.Ft) cov(e.Bg*e.Bb) cov(e.Fg*e.Fb) ///
+cov(B1[id]*B2[id]) cov(F1[id]*F2[id])
+
+
+estimates use BOTH
+estimates replay , coefl
+esttab ALL BOYS GIRLS, label b(%9.4g) se(%9.4g) nostar
+
+lincom  _b[Ft:m] =  _b[Bt:m]
