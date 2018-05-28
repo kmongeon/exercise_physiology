@@ -1,0 +1,23 @@
+
+```s/
+	quietly{
+	cd "C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript"
+	estimates use ALL
+	
+	nlcom _b[r:m] + _b[r:g] * _b[g:m] - _b[r:g]
+	
+
+	}
+	
+	
+```
+
+
+## Results
+
+The estimation results are summarized in Table 2. All level-1 fixed effects and level-2 random effects were found to be significant at the 0.01 level. To facilitate straightforward comparison of the causal effects, all variables were transformed/standardized to a mean of zero and standard deviation of one. Conclusions based on non-standardized values support identical inferences.
+
+The results are consistent with the relationships postulated by the functional model of bone development. Modulators influence muscle strengthd, which in turn, along with modulators influences bone properties. Therefore, modulators that influence muscle strength have an indirect influence on bone properties. In terms of standard unit changes, the direct impact of muscle strength and physical maturation on bone properties was `s %3.2f _b[r:g]`  and `s %3.2f _b[r:m]`. Physical maturation also influenced bone properties through its impact on muscle strength. The unit impact of physical maturation on grip strength was `s %3.2f _b[g:m]`. Therefore, the indirect impact of physical maturation on bone properties was `s %3.2f _b[r:g]*_b[g:m]` (`s %3.2f _b[r:g]` $\times$ `s %3.2f _b[g:m]`). The total impact of physical maturation on bone properties was `s %3.2f _b[r:m] + _b[r:g]*_b[g:m]` (`s %3.2f _b[r:m]` $+$ `s %3.2f _b[r:g]` $\times$ `s %3.2f _b[g:m]`), which was `s %3.2f _b[r:m] + _b[r:g] * _b[g:m] - _b[r:g]` greater than the impact on muscle strength, albiet the difference is not significant. 
+
+Osteoclast activity had a similar effect in boys and girls ({bn} and {gn}). The impact of physical maturation on muscle strength was {DMM} points greater for boys than girls, albeit the difference is not significant.
+
