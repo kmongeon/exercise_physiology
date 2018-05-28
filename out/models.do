@@ -1,6 +1,6 @@
-cd "/mnt/intel1200/projects/git/exercise_physiology/out/"
+*cd "/mnt/intel1200/projects/git/exercise_physiology/out/"
 
-import delimited /mnt/intel1200/projects/git/exercise_physiology/out/de.csv, clear case(preserve)
+*import delimited /mnt/intel1200/projects/git/exercise_physiology/out/de.csv, clear case(preserve)
 
 global R "r <- g@k1 m@k2 n@k3 M1[id]@1 _cons@kk"
 global T "t <- b@k1 m@k2 n@k3 M1[id]@1 _cons@kk"

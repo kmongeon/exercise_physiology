@@ -2,9 +2,18 @@ The repeated sampling of participants resulted in a hierarchical data set that c
 
 The bone property variances exhibited two distinct characteristics. One is that notable between and within variances existed. Another is that their was greater variation across participants (i.e., between) than across time (i.e., within). The standard deviation of radial SOS measurements across participants (i.e., between) was 86 m/s compared to 51 m/s. The across and with participant standard deviation of tibial SOS was 96 and 50 m/s, respectively. Each independent variable also had a greater between compared to within variance to suggest that a fixed-participant estimation procedure may lead to considerable efficiency loss and a random-participant model is appropriate.
 
-A multilevel structural equation model (i.e., SEM) was developed to describe bone property changes. In brief, SEM is a multivariate statistical technique used to estimate a system of equations and test hypotheses about the relationships among variables. To do so, SEM explicates the direct relationships between observed variables and the covariance relationships between unobserved variables. Models were constructed using Stata 14’s Generalized Structural Equation package (see Kaplan, 2008; Kline, 2015 for an overview of structural equation modeling). 
+The functional model of bone development provides the conceptual framework to model bone property changes. Rather than a direct causal effect between modulators and bone properties, the functional model of bone development postulates that modulators inflence muscle strength, which in turn influences bone properties (see Figure 1). A multilevel structural equation model  (i.e., SEM) was developed to test the intrinusic relationships between modulators, muscle strength, and bone properties. 
 
-The functional model of bone development provides the conceptual framework to model bone property changes. This model postulates that specific modulators influence muscle strength, which in turn, along with osteoblasts/osteoclasts related cellular modulators, influence bone properties (see Figure 1). The general SEM to describe bone property changes can be expressed as
+The goal of mediation analysis as framed in the literature in statistics is to disentangle the average treatment effect on outputs that operates through two channels: (1) Indirect output effects arising from the effect of treatment on measured inputs and (2) Direct output effects that operate through channels other than changes in the measured inputs. The mediation literature often ignores the point that Direct Effects are subject to some ambiguity: they can arise from inputs changed by the experiment that are not observed by the analyst, but can also arise from changes in the map between inputs and the outputs.
+The goal of mediation analysis as framed in the literature in statistics is to disentangle the average
+treatment effect on outputs that operates through two channels: (1) Indirect output effects arising
+from the effect of treatment on measured inputs and (2) Direct output effects that operate through
+2
+channels other than changes in the measured inputs.
+
+In brief, SEM is a multivariate statistical technique used to estimate a system of equations and test hypotheses about the relationships among variables. To do so, SEM explicates the direct relationships between observed variables and the covariance relationships between unobserved variables. Models were constructed using Stata 14’s Generalized Structural Equation package (see Kaplan, 2008; Kline, 2015 for an overview of structural equation modeling). 
+
+The general SEM to describe bone property changes can be expressed as
 
 $$
 \begin{align}
