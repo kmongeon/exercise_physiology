@@ -1,0 +1,75 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/doc/11-results.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}29 May 2018, 13:41:16
+{txt}
+{com}. //_1q
+. quietly{c -(}
+{txt}
+{com}.     
+.     
+. //_2
+. display %3.2f _b[r:g]
+{res}0.21
+{txt}
+{com}. //_3
+. display %3.2f _b[r:m]
+{res}0.23
+{txt}
+{com}. //_4
+. display %3.2f _b[r:g]*_b[g:m]
+{res}0.13
+{txt}
+{com}. //_5
+. display %3.2f _b[r:g]
+{res}0.21
+{txt}
+{com}. //_6
+. display %3.2f _b[g:m]
+{res}0.63
+{txt}
+{com}. //_7
+. display %3.2f _b[r:m] + _b[r:g]*_b[g:m]
+{res}0.36
+{txt}
+{com}. //_8
+. display %3.2f _b[r:m]
+{res}0.23
+{txt}
+{com}. //_9
+. display %3.2f _b[r:g]
+{res}0.21
+{txt}
+{com}. //_10
+. display %3.2f _b[g:m]
+{res}0.63
+{txt}
+{com}. //_11
+. display %3.2f _b[r:m] + _b[r:g] * _b[g:m] - _b[r:g]
+{res}0.15
+{txt}
+{com}. //_12
+. display %3.2f  _b[r:g]*_b[g:c]
+{res}0.02
+{txt}
+{com}. //_13q
+. quietly{c -(}
+{txt}
+{com}. 
+. //_14
+. display %3.2f _b[r:g] - _b[r:b]
+{res}{err}[r:b] not found
+{txt}{search r(111), local:r(111);}
+
+end of do-file
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/doc/11-results.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}29 May 2018, 13:41:16
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

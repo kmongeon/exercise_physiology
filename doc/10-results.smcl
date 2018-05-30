@@ -1,101 +1,31 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript\10-results.smcl
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/doc/10-results.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}28 May 2018, 14:20:29
+ {txt}opened on:  {res}29 May 2018, 13:36:34
 {txt}
 {com}. //_1q
 . quietly{c -(}
+{err}unable to change to C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript
+{txt}{search r(170), local:r(170);}
+
+end of do-file
+
+{com}. 
+. 
+. 
+. 
+{txt}end of do-file
+
+{com}. do 20-makedoc.do
 {txt}
-{com}.     
-.     
-. //_2
-. display %3.2f _b[r:g]
-{res}0.29
+{com}. 
+. clear all
 {txt}
-{com}. //_3
-. display %3.2f _b[r:m]
-{res}0.18
-{txt}
-{com}. //_4
-. display %3.2f _b[r:g]*_b[g:m]
-{res}0.18
-{txt}
-{com}. //_5
-. display %3.2f _b[r:g]
-{res}0.29
-{txt}
-{com}. //_6
-. display %3.2f _b[g:m]
-{res}0.62
-{txt}
-{com}. //_7
-. display %3.2f _b[r:m] + _b[r:g]*_b[g:m]
-{res}0.36
-{txt}
-{com}. //_8
-. display %3.2f _b[r:m]
-{res}0.18
-{txt}
-{com}. //_9
-. display %3.2f _b[r:g]
-{res}0.29
-{txt}
-{com}. //_10
-. display %3.2f _b[g:m]
-{res}0.62
-{txt}
-{com}. //_11
-. display %3.2f _b[r:m] + _b[r:g] * _b[g:m] - _b[r:g]
-{res}0.07
-{txt}
-{com}. //_12
-. display %3.2f  _b[r:g]*_b[g:c]
-{res}0.02
-{txt}
-{com}. //_13
-. display %3.2f _b[g:m]
-{res}0.62
-{txt}
-{com}. //_14
-. display %3.2f _b[r:g]*_b[g:m]
-{res}0.18
-{txt}
-{com}. //_15
-. display %3.2f _b[r:g]
-{res}0.29
-{txt}
-{com}. //_16
-. display %3.2f _b[g:m]
-{res}0.62
-{txt}
-{com}. //_17
-. display %3.2f _b[r:m] + _b[r:g]*_b[g:m]
-{res}0.36
-{txt}
-{com}. //_18
-. display %3.2f _b[r:m]
-{res}0.18
-{txt}
-{com}. //_19
-. display %3.2f _b[r:g]
-{res}0.29
-{txt}
-{com}. //_20
-. display %3.2f _b[g:m]
-{res}0.62
-{txt}
-{com}. //_21
-. display %3.2f _b[r:m] + _b[r:g] * _b[g:m] - _b[r:g]
-{res}0.07
-{txt}
-{com}. //_^
-. log close
-      {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript\10-results.smcl
-  {txt}log type:  {res}smcl
- {txt}closed on:  {res}28 May 2018, 14:20:30
-{txt}{.-}
+{com}. *cd ~/Documents/GitHub/exercise_physiology/manuscript
+. markstat using 11-results.stmd,  keep
+{res}{txt}
+{com}. capture log close
 {smcl}
-{txt}{sf}{ul off}
+{com}{sf}{ul off}

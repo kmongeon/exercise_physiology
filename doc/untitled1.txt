@@ -1,0 +1,34 @@
+/*
+
+quietly gsem ($R2) ($T2) ($M2), $C $L $O
+estimates save M2, replace
+estimates store M2
+matrix b = e(b)
+
+quietly gsem ($R3) ($T3) ($M3), $C $L $O from(b, skip)
+estimates save M3, replace
+estimates store M3
+
+quietly gsem ($R1) ($T1) ($M1) if boy==1, $C $L $O
+estimates save M4, replace
+estimates store M4
+
+quietly gsem ($R1) ($T1) ($M1) if boy==0, $C $L $O
+estimates save M5, replace
+estimates store M5
+*/
+
+constraint 1 [r]g - [t]k = 0
+constraint 2 [r]m - [t]m = 0
+constraint 3 [r]n - [t]n = 0
+constraint 4 [r]q - [t]q = 0
+constraint 5 [r]i - [t]i = 0
+constraint 6 [r]e - [t]e = 0
+constraint 7 [r]_cons - [t]_cons = 0
+
+constraint 10 [g]m - [b]m = 0
+constraint 11 [g]c - [b]c = 0
+constraint 12 [g]p - [b]p = 0
+constraint 13 [g]i - [b]i = 0
+constraint 14 [g]e - [b]e = 0
+constraint 15 [g]_cons - [b]_cons = 0

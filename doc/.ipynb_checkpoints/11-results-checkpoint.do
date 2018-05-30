@@ -1,5 +1,5 @@
 capture log close
-log using "10-results", smcl replace
+log using "11-results", smcl replace
 //_1q
 quietly{
 cd "C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript"

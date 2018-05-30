@@ -1,9 +1,9 @@
 capture log close
-log using "10-results", smcl replace
+log using "11-results", smcl replace
 //_1q
 quietly{
-cd "C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript"
-estimates use ALL
+*cd "C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript"
+estimates use M1
     
 nlcom _b[r:m] + _b[r:g] * _b[g:m] - _b[r:g]
     
@@ -35,7 +35,7 @@ display %3.2f _b[r:m] + _b[r:g] * _b[g:m] - _b[r:g]
 display %3.2f  _b[r:g]*_b[g:c]
 //_13q
 quietly{
-cd "C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript"
+*cd "C:\Users\kevin\Documents\GitHub\exercise_physiology\manuscript"
 estimates use M2
 }
 
