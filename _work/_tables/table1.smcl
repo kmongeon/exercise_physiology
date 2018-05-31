@@ -1,0 +1,207 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_tables/table1.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}31 May 2018, 14:30:56
+{txt}
+{com}. //_1q
+. quietly use ./_analysis/DM, clear
+{txt}
+{com}. quietly xtset id trip
+{txt}
+{com}. quietly global L "rsos  tsos  grip  biodex  ntxc  matu  calo  mvh  Godin_PA  PAQ_PRVNT  BMI  Bone_Age"
+{txt}
+{com}. quietly foreach var in $L {c -(}
+{txt}
+{com}.                 
+. scalar d1 =  rsos_mea - tsos_mea 
+{txt}
+{com}. display d1
+{res}128.67241
+{txt}
+{com}. //_2
+. display `f' rsos_mea
+{res}3816.08
+{txt}
+{com}. //_3
+. display `f' rsos_sdn
+{res}100.01
+{txt}
+{com}. //_4
+. display `f' rsos_sdw
+{res}51.45
+{txt}
+{com}. //_5
+. display `f' rsos_sdb
+{res}86.03
+{txt}
+{com}. //_6
+. display `f' tsos_mea
+{res}3687.41
+{txt}
+{com}. //_7
+. display `f' tsos_sdn
+{res}109.42
+{txt}
+{com}. //_8
+. display `f' tsos_sdw
+{res}49.82
+{txt}
+{com}. //_9
+. display `f' tsos_sdb
+{res}96.75
+{txt}
+{com}. //_10
+. display `f' grip_mea
+{res}23.43
+{txt}
+{com}. //_11
+. display `f' grip_sdn
+{res}7.40
+{txt}
+{com}. //_12
+. display `f' grip_sdw
+{res}3.21
+{txt}
+{com}. //_13
+. display `f' grip_sdb
+{res}7.00
+{txt}
+{com}. //_14
+. display `f' biodex_mea
+{res}131.48
+{txt}
+{com}. //_15
+. display `f' biodex_sdn
+{res}57.73
+{txt}
+{com}. //_16
+. display `f' biodex_sdw
+{res}22.32
+{txt}
+{com}. //_17
+. display `f' biodex_sdb
+{res}56.62
+{txt}
+{com}. //_18
+. display `f' ntxc_mea
+{res}539.82
+{txt}
+{com}. //_19
+. display `f' ntxc_sdn
+{res}263.65
+{txt}
+{com}. //_20
+. display `f' ntxc_sdw
+{res}169.87
+{txt}
+{com}. //_21
+. display `f' ntxc_sdb
+{res}213.75
+{txt}
+{com}. //_22
+. display `f' matu_mea
+{res}-0.86
+{txt}
+{com}. //_23
+. display `f' matu_sdn
+{res}2.02
+{txt}
+{com}. //_24
+. display `f' matu_sdw
+{res}0.88
+{txt}
+{com}. //_25
+. display `f' matu_sdb
+{res}1.92
+{txt}
+{com}. //_26
+. display `f' calo_mea
+{res}1593.43
+{txt}
+{com}. //_27
+. display `f' calo_sdn
+{res}479.51
+{txt}
+{com}. //_28
+. display `f' calo_sdw
+{res}297.62
+{txt}
+{com}. //_29
+. display `f' calo_sdb
+{res}369.99
+{txt}
+{com}. //_30
+. display `f' Godin_PA_mea
+{res}73.78
+{txt}
+{com}. //_31
+. display `f' Godin_PA_sdn
+{res}39.60
+{txt}
+{com}. //_32
+. display `f' Godin_PA_sdw
+{res}24.84
+{txt}
+{com}. //_33
+. display `f' Godin_PA_sdb
+{res}32.86
+{txt}
+{com}. //_34
+. display `f' PAQ_PRVNT_mea
+{res}0.10
+{txt}
+{com}. //_35
+. display `f' PAQ_PRVNT_sdn
+{res}0.30
+{txt}
+{com}. //_36
+. display `f' PAQ_PRVNT_sdw
+{res}0.21
+{txt}
+{com}. //_37
+. display `f' PAQ_PRVNT_sdb
+{res}0.24
+{txt}
+{com}. //_38
+. display `f' BMI_mea
+{res}19.54
+{txt}
+{com}. //_39
+. display `f' BMI_sdn
+{res}3.66
+{txt}
+{com}. //_40
+. display `f' BMI_sdw
+{res}1.19
+{txt}
+{com}. //_41
+. display `f' BMI_sdb
+{res}3.60
+{txt}
+{com}. //_42
+. display `f' Bone_Age_mea
+{res}12.02
+{txt}
+{com}. //_43
+. display `f' Bone_Age_sdn
+{res}2.34
+{txt}
+{com}. //_44
+. display `f' Bone_Age_sdw
+{res}1.10
+{txt}
+{com}. //_45
+. display `f' Bone_Age_sdb
+{res}2.21
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_tables/table1.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}31 May 2018, 14:30:56
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

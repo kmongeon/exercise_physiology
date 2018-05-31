@@ -1,0 +1,51 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_out/tables.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}31 May 2018, 10:27:47
+{txt}
+{com}. //_1q
+. quietly sysuse auto, clear
+{txt}
+{com}. quietly gen gphm = 100/mpg
+{txt}
+{com}. quietly regress gphm foreign
+{txt}
+{com}. mat b = e(b)
+{txt}
+{com}. quietly sum weight
+{txt}
+{com}. scalar mw = r(mean)
+{txt}
+{com}. quietly reg gphm weight foreign
+{txt}
+{com}. scalar dom = _b[_cons] + _b[weight] * mw
+{txt}
+{com}. local f %6.2f
+{txt}
+{com}. //_2
+. display `f' b[1,1]+b[1,2]
+{res}  4.31
+{txt}
+{com}. //_3
+. display `f' dom + _b[foreign]
+{res}  5.46
+{txt}
+{com}. //_4
+. display `f' b[1,2]
+{res}  5.32
+{txt}
+{com}. //_5
+. display `f' dom
+{res}  4.83
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_out/tables.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}31 May 2018, 10:27:47
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

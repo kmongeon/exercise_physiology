@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<p>{{1}}</p>
+<p>The repeated sampling of participants resulted in a hierarchical data set that consisted of within (level 1) and between (level 2) measurement variations. Table 1 outlines the variables used in the analysis, their means, and their standard deviations within and between participants. Shapiro-Wilk's tests did not reject the null hypothesis that the radial and tibial bone property distributions are normally distribution. Radial SOS measured an average of 129 points greater than tibial SOS (p=0.00). Girls, on average, has greater bone property measurements than boys; radial SOS by 19 (p=0.0495) and tibial SOS 22 points (0.0376).</p>
+<p>The bone property variances exhibited two distinct characteristics. One is that notable between and within variances existed. Another is that their was greater variation across participants (i.e., between) than across time (i.e., within). The standard deviation of radial SOS measurements across participants (i.e., between) was 86 m/s compared to 51 m/s. The across and with participant standard deviation of tibial SOS was 96 and 50 m/s, respectively. Each independent variable also had a greater between compared to within variance to suggest that a fixed-participant estimation procedure may lead to considerable efficiency loss and a random-participant model is appropriate.</p>
+<h2 id="table-1.-descriptive-statistics.">Table 1. Descriptive statistics.</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="right">Mean</th>
+<th align="right">Std dev.</th>
+<th align="right">Std dev within</th>
+<th align="right">Std dev. between</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Radial SOS</td>
+<td align="right">{{.2}}</td>
+<td align="right">{{.3}}</td>
+<td align="right">{{.4}}</td>
+<td align="right">{{.5}}</td>
+</tr>
+<tr class="even">
+<td align="left">Tibial SOS</td>
+<td align="right">{{.6}}</td>
+<td align="right">{{.7}}</td>
+<td align="right">{{.8}}</td>
+<td align="right">{{.9}}</td>
+</tr>
+<tr class="odd">
+<td align="left">Grip strength</td>
+<td align="right">{{.10}}</td>
+<td align="right">{{.11}}</td>
+<td align="right">{{.12}}</td>
+<td align="right">{{.13}}</td>
+</tr>
+<tr class="even">
+<td align="left">Knee extensor</td>
+<td align="right">{{.14}}</td>
+<td align="right">{{.15}}</td>
+<td align="right">{{.16}}</td>
+<td align="right">{{.17}}</td>
+</tr>
+<tr class="odd">
+<td align="left">NTX creatine</td>
+<td align="right">{{.18}}</td>
+<td align="right">{{.19}}</td>
+<td align="right">{{.20}}</td>
+<td align="right">{{.21}}</td>
+</tr>
+<tr class="even">
+<td align="left">Maturity offset</td>
+<td align="right">{{.22}}</td>
+<td align="right">{{.23}}</td>
+<td align="right">{{.24}}</td>
+<td align="right">{{.25}}</td>
+</tr>
+<tr class="odd">
+<td align="left">Energy intake</td>
+<td align="right">{{.26}}</td>
+<td align="right">{{.27}}</td>
+<td align="right">{{.28}}</td>
+<td align="right">{{.29}}</td>
+</tr>
+<tr class="even">
+<td align="left">Godin PA</td>
+<td align="right">{{.30}}</td>
+<td align="right">{{.31}}</td>
+<td align="right">{{.32}}</td>
+<td align="right">{{.33}}</td>
+</tr>
+<tr class="odd">
+<td align="left">PVRNT</td>
+<td align="right">{{.34}}</td>
+<td align="right">{{.35}}</td>
+<td align="right">{{.36}}</td>
+<td align="right">{{.37}}</td>
+</tr>
+<tr class="even">
+<td align="left">BMI</td>
+<td align="right">{{.38}}</td>
+<td align="right">{{.39}}</td>
+<td align="right">{{.40}}</td>
+<td align="right">{{.41}}</td>
+</tr>
+<tr class="odd">
+<td align="left">Bone age</td>
+<td align="right">{{.42}}</td>
+<td align="right">{{.43}}</td>
+<td align="right">{{.44}}</td>
+<td align="right">{{.45}}</td>
+</tr>
+</tbody>
+</table>
+<p>Foreign cars use less fuel than domestic cars but are also lighter, when we compare cars with the same weight the imports use six-tenths of a gallon more per 100 miles than the domestic cars.</p>
+</body>
+</html>

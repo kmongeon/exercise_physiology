@@ -1,3 +1,5 @@
+#delimit cr
+
 /*
 ssc install distinct
 net from http://www.sealedenvelope.com/ 
@@ -6,18 +8,20 @@ net install xtab.pkg
 net install xcount.pkg
 net install reformat.pkg
 */
-
 clear all
+pwd
+
+global DS "_data_source"
+global DO "_data_out"
+
+cd $DS
+capture mkdir $DO
 
 tempfile dt1
 tempfile dt2
 
-global DIR_DATA "C:\Users\kmongeon\Documents\GIT\exercise_physiology\data\"
-cd $DIR_DATA
-
 import excel "bone_muscle_merged.xlsx", sheet("bone_muscle_merged") firstrow clear  
 save `dt1'
-
 import excel "Kevin PTISO.xlsx", sheet("SeqSort2")  firstrow clear
 rename ID id
 rename SEQ sequence
@@ -34,7 +38,8 @@ order Biodex MatLab, after(ptiso)
 destring rsos tsos grip ptiso Biodex MatLab ntxc matu mvh age, replace force
 sort id sequence
 
-export excel using "AllObservations.xls", firstrow(variables) replace
+cd $DO
+export excel using AllObservations.xls, firstrow(variables) replace
 
 ******************************************************
 * describe data
@@ -91,4 +96,3 @@ count
 
 sum rsos tsos grip ptiso Biodex MatLab ntxc matu mvh age,  separator(0) 
 putexcel set "summary.xls"
-
