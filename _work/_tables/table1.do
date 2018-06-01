@@ -1,20 +1,10 @@
 capture log close
 log using "./_tables/table1", smcl replace
 //_1q
-quietly use ./_analysis/DM, clear
-quietly xtset id trip
-quietly global L "rsos  tsos  grip  biodex  ntxc  matu  calo  mvh  Godin_PA  PAQ_PRVNT  BMI  Bone_Age"
-quietly foreach var in $L {
-    xtsum `var'
-    scalar `var'_mea = r(mean)
-    scalar `var'_sdn  = r(sd)
-    scalar `var'_sdw  = r(sd_w)
-    scalar `var'_sdb  = r(sd_b)
-    local f %3.2f
+quietly{
+do ./_tables/_make_t1.do
+local f %3.2f
 }
-                
-scalar d1 =  rsos_mea - tsos_mea 
-display d1
 //_2
 display `f' rsos_mea
 //_3

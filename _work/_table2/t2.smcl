@@ -1,0 +1,90 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_table2/t2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 1 Jun 2018, 12:22:07
+{txt}
+{com}. //_1q
+. quietly use ./_analysis/DM, clear
+{txt}
+{com}. quietly do _preamble.do
+{txt}
+{com}. 
+. quietly estimates use M1
+{txt}
+{com}. quietly estimates store M1 
+{txt}
+{com}. 
+. quietly estimates use M2
+{txt}
+{com}. quietly estimates store M2 
+{txt}
+{com}. 
+. esttab M1 M2 , ///
+> keep(r: t: g: k:) ///
+> order(r:g t:k) ///
+> drop(r:P1[id] t:P1[id] g:P2[id] k:P2[id]) ///
+> label compress nonotes numbers unstack  ///
+> b(%9.4f) se(%9.4f)  star(* 0.10 ** 0.05 *** 0.01)  ///
+> title("Table 2. Functional model of bone development test results.")  ///
+> mtitles("General" "Specific") ///
+> addnotes("Notes: Standard errors in parentheses.") ///
+> varwidth(25) modelwidth(10) stats(_M1v1 _M1v2 _M1v3 _M2v1 _M2v2 _M2v3) 
+{res}
+{txt}Table 2. Functional model of bone development test results.
+{txt}{hline 137}
+{txt}                                 (1)                                                     (2)                                             
+{txt}                             General                                                Specific                                             
+{txt}                          Radial SOS    Tibial SOS    Radial SOS    Tibial SOS    Radial SOS    Tibial SOS    Radial SOS    Tibial SOS   
+{txt}{hline 137}
+{txt}Grip strength            {res}     0.2878***                   0.2878***                   0.2570***                   0.2570***              {txt}
+                         {res} {ralign 10:{txt:(}0.0615{txt:)}}                  {ralign 10:{txt:(}0.0615{txt:)}}                  {ralign 10:{txt:(}0.0716{txt:)}}                  {ralign 10:{txt:(}0.0716{txt:)}}                 {txt}
+
+{txt}Knee extensor            {res}                   0.2878***                   0.2878***                   0.2951***                   0.2951***{txt}
+                         {res}               {ralign 10:{txt:(}0.0615{txt:)}}                  {ralign 10:{txt:(}0.0615{txt:)}}                  {ralign 10:{txt:(}0.0710{txt:)}}                  {ralign 10:{txt:(}0.0710{txt:)}}   {txt}
+
+{txt}Physical maturation      {res}     0.2412***     0.2412***     0.2412***     0.2412***     0.1646***     0.2998***     0.1646***     0.2998***{txt}
+                         {res} {ralign 10:{txt:(}0.0520{txt:)}}    {ralign 10:{txt:(}0.0520{txt:)}}    {ralign 10:{txt:(}0.0520{txt:)}}    {ralign 10:{txt:(}0.0520{txt:)}}    {ralign 10:{txt:(}0.0626{txt:)}}    {ralign 10:{txt:(}0.0594{txt:)}}    {ralign 10:{txt:(}0.0626{txt:)}}    {ralign 10:{txt:(}0.0594{txt:)}}   {txt}
+
+{txt}Ntx creatinine           {res}    -0.1840***    -0.1840***    -0.1840***    -0.1840***    -0.2507***    -0.1526***    -0.2507***    -0.1526***{txt}
+                         {res} {ralign 10:{txt:(}0.0332{txt:)}}    {ralign 10:{txt:(}0.0332{txt:)}}    {ralign 10:{txt:(}0.0332{txt:)}}    {ralign 10:{txt:(}0.0332{txt:)}}    {ralign 10:{txt:(}0.0498{txt:)}}    {ralign 10:{txt:(}0.0382{txt:)}}    {ralign 10:{txt:(}0.0498{txt:)}}    {ralign 10:{txt:(}0.0382{txt:)}}   {txt}
+
+{txt}PA PRVNT                 {res}     0.0565*       0.0565*       0.0565*       0.0565*       0.0923**      0.0328        0.0923**      0.0328   {txt}
+                         {res} {ralign 10:{txt:(}0.0292{txt:)}}    {ralign 10:{txt:(}0.0292{txt:)}}    {ralign 10:{txt:(}0.0292{txt:)}}    {ralign 10:{txt:(}0.0292{txt:)}}    {ralign 10:{txt:(}0.0433{txt:)}}    {ralign 10:{txt:(}0.0350{txt:)}}    {ralign 10:{txt:(}0.0433{txt:)}}    {ralign 10:{txt:(}0.0350{txt:)}}   {txt}
+
+{txt}BMI                      {res}    -0.1784***    -0.1784***    -0.1784***    -0.1784***    -0.0604       -0.2526***    -0.0604       -0.2526***{txt}
+                         {res} {ralign 10:{txt:(}0.0560{txt:)}}    {ralign 10:{txt:(}0.0560{txt:)}}    {ralign 10:{txt:(}0.0560{txt:)}}    {ralign 10:{txt:(}0.0560{txt:)}}    {ralign 10:{txt:(}0.0669{txt:)}}    {ralign 10:{txt:(}0.0615{txt:)}}    {ralign 10:{txt:(}0.0669{txt:)}}    {ralign 10:{txt:(}0.0615{txt:)}}   {txt}
+
+{txt}Energy intake            {res}                                                                                                                {txt}
+                         {res}                                                                                                                {txt}
+
+{txt}PA Godin                 {res}                                                                                                                {txt}
+                         {res}                                                                                                                {txt}
+
+{txt}Bone age                 {res}                                                                                                                {txt}
+                         {res}                                                                                                                {txt}
+
+{txt}Constant                 {res}    -0.0302       -0.0302       -0.0302       -0.0302       -0.0346       -0.0330       -0.0346       -0.0330   {txt}
+                         {res} {ralign 10:{txt:(}0.0504{txt:)}}    {ralign 10:{txt:(}0.0504{txt:)}}    {ralign 10:{txt:(}0.0504{txt:)}}    {ralign 10:{txt:(}0.0504{txt:)}}    {ralign 10:{txt:(}0.0590{txt:)}}    {ralign 10:{txt:(}0.0538{txt:)}}    {ralign 10:{txt:(}0.0590{txt:)}}    {ralign 10:{txt:(}0.0538{txt:)}}   {txt}
+{txt}{hline 137}
+{txt}_M1v1                    {res}                                                                                                                {txt}
+{txt}_M1v2                    {res}                                                                                                                {txt}
+{txt}_M1v3                    {res}                                                                                                                {txt}
+{txt}_M2v1                    {res}                                                                                                                {txt}
+{txt}_M2v2                    {res}                                                                                                                {txt}
+{txt}_M2v3                    {res}                                                                                                                {txt}
+{txt}{hline 137}
+{txt}Notes: Standard errors in parentheses.
+
+{com}.     
+.     
+. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_table2/t2.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 1 Jun 2018, 12:22:07
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

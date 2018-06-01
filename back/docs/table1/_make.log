@@ -1,0 +1,289 @@
+
+  ___  ____  ____  ____  ____ (R)
+ /__    /   ____/   /   ____/
+___/   /   /___/   /   /___/   14.2   Copyright 1985-2015 StataCorp LLC
+  Statistics/Data Analysis            StataCorp
+                                      4905 Lakeway Drive
+     MP - Parallel Edition            College Station, Texas 77845 USA
+                                      800-STATA-PC        http://www.stata.com
+                                      979-696-4600        stata@stata.com
+                                      979-696-4601 (fax)
+
+Single-user 32-core Stata perpetual license:
+       Serial number:  501406362764
+         Licensed to:  Kevin
+                       Brock
+
+Notes:
+      1.  Stata is running in batch mode.
+      2.  Unicode is supported; see help unicode_advice.
+      3.  More than 2 billion observations are allowed; see help obs_advice.
+      4.  Maximum number of variables is set to 5000; see help set_maxvar.
+
+. do _make.do 
+
+. 
+. markstat using t1summary.stmd, docx
+
+. capture log close
+
+. log using "t1summary", smcl replace
+(note: file /mnt/intel1200/projects/git/ep_pub/docs/table1/t1summary.smcl not f
+> ound)
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /mnt/intel1200/projects/git/ep_pub/docs/table1/t1summary.smcl
+  log type:  smcl
+ opened on:   1 Jun 2018, 17:09:37
+
+. //_1q
+. quietly do t1gen.do
+
+. local f %3.2f
+
+. //_2
+. display %3.2f sos_diff_mu
+128.67
+
+. //_3
+. display %3.2f sos_diff_pv
+0.00
+
+. //_4
+. display %3.2f rdiff_mu
+19.50
+
+. //_5
+. display %3.2f rdiff_pv
+0.05
+
+. //_6
+. display %3.2f tdiff_mu
+22.57
+
+. //_7
+. display %3.2f tdiff_pv
+0.04
+
+. //_^
+. log close
+      name:  <unnamed>
+       log:  /mnt/intel1200/projects/git/ep_pub/docs/table1/t1summary.smcl
+  log type:  smcl
+ closed on:   1 Jun 2018, 17:09:37
+-------------------------------------------------------------------------------
+
+. 
+end of do-file
+Running Pandoc
+file /home/kevin/ado/plus/m/markstat.docx not found
+
+. markstat using t1table.stmd, docx
+
+. capture log close
+
+. log using "t1table", smcl replace
+(note: file /mnt/intel1200/projects/git/ep_pub/docs/table1/t1table.smcl not fou
+> nd)
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /mnt/intel1200/projects/git/ep_pub/docs/table1/t1table.smcl
+  log type:  smcl
+ opened on:   1 Jun 2018, 17:09:37
+
+. //_1q
+. quietly do t1gen.do
+
+. local f %3.2f
+
+. //_2
+. display `f' rsos_mea
+3816.08
+
+. //_3
+. display `f' rsos_sdn
+100.01
+
+. //_4
+. display `f' rsos_sdw
+51.45
+
+. //_5
+. display `f' rsos_sdb
+86.03
+
+. //_6
+. display `f' tsos_mea
+3687.41
+
+. //_7
+. display `f' tsos_sdn
+109.42
+
+. //_8
+. display `f' tsos_sdw
+49.82
+
+. //_9
+. display `f' tsos_sdb
+96.75
+
+. //_10
+. display `f' grip_mea
+23.43
+
+. //_11
+. display `f' grip_sdn
+7.40
+
+. //_12
+. display `f' grip_sdw
+3.21
+
+. //_13
+. display `f' grip_sdb
+7.00
+
+. //_14
+. display `f' biodex_mea
+131.48
+
+. //_15
+. display `f' biodex_sdn
+57.73
+
+. //_16
+. display `f' biodex_sdw
+22.32
+
+. //_17
+. display `f' biodex_sdb
+56.62
+
+. //_18
+. display `f' ntxc_mea
+539.82
+
+. //_19
+. display `f' ntxc_sdn
+263.65
+
+. //_20
+. display `f' ntxc_sdw
+169.87
+
+. //_21
+. display `f' ntxc_sdb
+213.75
+
+. //_22
+. display `f' matu_mea
+-0.86
+
+. //_23
+. display `f' matu_sdn
+2.02
+
+. //_24
+. display `f' matu_sdw
+0.88
+
+. //_25
+. display `f' matu_sdb
+1.92
+
+. //_26
+. display `f' calo_mea
+1593.43
+
+. //_27
+. display `f' calo_sdn
+479.51
+
+. //_28
+. display `f' calo_sdw
+297.62
+
+. //_29
+. display `f' calo_sdb
+369.99
+
+. //_30
+. display `f' Godin_PA_mea
+73.78
+
+. //_31
+. display `f' Godin_PA_sdn
+39.60
+
+. //_32
+. display `f' Godin_PA_sdw
+24.84
+
+. //_33
+. display `f' Godin_PA_sdb
+32.86
+
+. //_34
+. display `f' PAQ_PRVNT_mea
+0.10
+
+. //_35
+. display `f' PAQ_PRVNT_sdn
+0.30
+
+. //_36
+. display `f' PAQ_PRVNT_sdw
+0.21
+
+. //_37
+. display `f' PAQ_PRVNT_sdb
+0.24
+
+. //_38
+. display `f' BMI_mea
+19.54
+
+. //_39
+. display `f' BMI_sdn
+3.66
+
+. //_40
+. display `f' BMI_sdw
+1.19
+
+. //_41
+. display `f' BMI_sdb
+3.60
+
+. //_42
+. display `f' Bone_Age_mea
+12.02
+
+. //_43
+. display `f' Bone_Age_sdn
+2.34
+
+. //_44
+. display `f' Bone_Age_sdw
+1.10
+
+. //_45
+. display `f' Bone_Age_sdb
+2.21
+
+. //_^
+. log close
+      name:  <unnamed>
+       log:  /mnt/intel1200/projects/git/ep_pub/docs/table1/t1table.smcl
+  log type:  smcl
+ closed on:   1 Jun 2018, 17:09:37
+-------------------------------------------------------------------------------
+
+. 
+end of do-file
+Running Pandoc
+file /home/kevin/ado/plus/m/markstat.docx not found
+
+. 
+end of do-file

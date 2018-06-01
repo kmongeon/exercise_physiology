@@ -1,0 +1,20 @@
+
+```s/
+    quietly do t1gen.do
+    local f %3.2f
+```
+
+
+| Variable      | Mean                 | Standard deviation  | Standard deviation within  | Standard deviation between   |          
+|:--------------|------------------:|-------------------:|-------------------:|-------------------:|
+| Radial SOS    | `s `f' rsos_mea` | `s `f' rsos_sdn` | `s `f' rsos_sdw` | `s `f' rsos_sdb` |
+| Tibial SOS    | `s `f' tsos_mea` | `s `f' tsos_sdn` | `s `f' tsos_sdw` | `s `f' tsos_sdb` |
+| Grip strength | `s `f' grip_mea` | `s `f' grip_sdn` | `s `f' grip_sdw` | `s `f' grip_sdb` |
+| Knee extensor | `s `f' biodex_mea` | `s `f' biodex_sdn` | `s `f' biodex_sdw` | `s `f' biodex_sdb` |
+| NTX creatine  | `s `f' ntxc_mea` | `s `f' ntxc_sdn` | `s `f' ntxc_sdw` | `s `f' ntxc_sdb` |
+| Maturity offset | `s `f' matu_mea` | `s `f' matu_sdn` | `s `f' matu_sdw` | `s `f' matu_sdb` |
+| Energy intake | `s `f' calo_mea` | `s `f' calo_sdn` | `s `f' calo_sdw` | `s `f' calo_sdb` |
+| Godin PA      | `s `f' Godin_PA_mea` | `s `f' Godin_PA_sdn` | `s `f' Godin_PA_sdw` | `s `f' Godin_PA_sdb` |
+| PVRNT         | `s `f' PAQ_PRVNT_mea` | `s `f' PAQ_PRVNT_sdn` | `s `f' PAQ_PRVNT_sdw` | `s `f' PAQ_PRVNT_sdb` |
+| BMI           | `s `f' BMI_mea` | `s `f' BMI_sdn` | `s `f' BMI_sdw` | `s `f' BMI_sdb` |
+| Bone age      | `s `f' Bone_Age_mea` | `s `f' Bone_Age_sdn` | `s `f' Bone_Age_sdw` | `s `f' Bone_Age_sdb` |

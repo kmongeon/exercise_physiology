@@ -1,0 +1,43 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_tables/table1_summary.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 1 Jun 2018, 10:31:26
+{txt}
+{com}. //_1q
+. quietly{c -(}
+{txt}
+{com}. //_2
+. display %3.2f sos_diff_mu
+{res}128.67
+{txt}
+{com}. //_3
+. display %3.2f sos_diff_pv
+{res}0.00
+{txt}
+{com}. //_4
+. display %3.2f rdiff_mu
+{res}19.50
+{txt}
+{com}. //_5
+. display %3.2f rdiff_pv
+{res}0.05
+{txt}
+{com}. //_6
+. display %3.2f tdiff_mu
+{res}22.57
+{txt}
+{com}. //_7
+. display %3.2f tdiff_pv
+{res}0.04
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_tables/table1_summary.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 1 Jun 2018, 10:31:26
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

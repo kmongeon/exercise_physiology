@@ -17,7 +17,7 @@ estadd scalar _M2v3 = _b[cov(P1[id]*P2[id]):_cons]
 
 #delimit ;
 
-esttab M1 M2, 
+esttab M1 M2 using ./_table2/t2.html, replace
 keep(r: t: g: k:) 
 order(r:g t:k)
 drop(r:P1[id] t:P1[id] g:P2[id] k:P2[id])
@@ -29,7 +29,7 @@ addnotes("Notes: Standard errors in parentheses.")
 varwidth(25) modelwidth(10) stats(_M1v1 _M1v2 _M1v3 _M2v1 _M2v2 _M2v3)
 ;
 
-esttab M1 M2 using table_all.rtf, replace
+esttab M1 M2 using ./_table2/t2.tex, replace
 keep(r: t: g: k:) 
 order(r:g t:k)
 drop(r:P1[id] t:P1[id] g:P2[id] k:P2[id])
@@ -40,6 +40,32 @@ mtitles("General" "Specific")
 addnotes("Notes: Standard errors in parentheses.") 
 varwidth(25) modelwidth(10) stats(_M1v1 _M1v2 _M1v3 _M2v1 _M2v2 _M2v3)
 ;
+
+esttab M1 M2 using ./_table2/t2.md, replace
+keep(r: t: g: k:) 
+order(r:g t:k)
+drop(r:P1[id] t:P1[id] g:P2[id] k:P2[id])
+label compress nonotes numbers unstack 
+b(%9.4f) se(%9.4f)  star(* 0.10 ** 0.05 *** 0.01) 
+title("Table 2. Functional model of bone development test results.") 
+mtitles("General" "Specific")
+addnotes("Notes: Standard errors in parentheses.") 
+varwidth(25) modelwidth(10) stats(_M1v1 _M1v2 _M1v3 _M2v1 _M2v2 _M2v3)
+;
+
+quietly esttab M1 M2 using table_all.rtf, replace
+keep(r: t: g: k:) 
+order(r:g t:k)
+drop(r:P1[id] t:P1[id] g:P2[id] k:P2[id])
+label compress nonotes numbers unstack 
+b(%9.4f) se(%9.4f)  star(* 0.10 ** 0.05 *** 0.01) 
+title("Table 2. Functional model of bone development test results.") 
+mtitles("General" "Specific")
+addnotes("Notes: Standard errors in parentheses.") 
+varwidth(25) modelwidth(10) stats(_M1v1 _M1v2 _M1v3 _M2v1 _M2v2 _M2v3)
+;
+
+
 
 #delimit cr
 

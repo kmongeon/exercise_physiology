@@ -3,22 +3,10 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_tables/table1.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}31 May 2018, 14:30:56
+ {txt}opened on:  {res} 1 Jun 2018, 10:31:26
 {txt}
 {com}. //_1q
-. quietly use ./_analysis/DM, clear
-{txt}
-{com}. quietly xtset id trip
-{txt}
-{com}. quietly global L "rsos  tsos  grip  biodex  ntxc  matu  calo  mvh  Godin_PA  PAQ_PRVNT  BMI  Bone_Age"
-{txt}
-{com}. quietly foreach var in $L {c -(}
-{txt}
-{com}.                 
-. scalar d1 =  rsos_mea - tsos_mea 
-{txt}
-{com}. display d1
-{res}128.67241
+. quietly{c -(}
 {txt}
 {com}. //_2
 . display `f' rsos_mea
@@ -201,7 +189,7 @@
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/mnt/intel1200/projects/git/exercise_physiology/_work/_tables/table1.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}31 May 2018, 14:30:56
+ {txt}closed on:  {res} 1 Jun 2018, 10:31:26
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
